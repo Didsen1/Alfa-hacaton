@@ -17,9 +17,7 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
     reducer: rootReducer,
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.
-    middleware: getDefaultMiddleware => {
-      return getDefaultMiddleware().concat(quotesApiSlice.middleware)
-    },
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(quotesApiSlice.middleware),
     preloadedState,
   })
   // configure listeners using the provided defaults
@@ -34,9 +32,4 @@ export const store = makeStore()
 export type AppStore = typeof store
 // Infer the `AppDispatch` type from the store itself
 export type AppDispatch = AppStore["dispatch"]
-export type AppThunk<ThunkReturnType = void> = ThunkAction<
-  ThunkReturnType,
-  RootState,
-  unknown,
-  Action
->
+export type AppThunk<ThunkReturnType = void> = ThunkAction<ThunkReturnType, RootState, unknown, Action>
