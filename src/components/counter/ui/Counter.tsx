@@ -1,7 +1,7 @@
 import { useState } from "react"
-
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import styles from "./Counter.module.css"
+import { useAppDispatch, useAppSelector } from "app/store/hooks"
+import { Link } from "react-router-dom"
+import styles from "./Counter.module.scss"
 import {
   decrement,
   increment,
@@ -10,7 +10,7 @@ import {
   incrementIfOdd,
   selectCount,
   selectStatus,
-} from "./counterSlice"
+} from "../model/counterSlice"
 
 export const Counter = () => {
   const dispatch = useAppDispatch()
@@ -22,6 +22,7 @@ export const Counter = () => {
 
   return (
     <div>
+      <Link to='/'>Back</Link>
       <div className={styles.row}>
         <button type="button" className={styles.button} aria-label="Decrement value" onClick={() => dispatch(decrement())}>
           -

@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom"
 import { useState } from "react"
-import styles from "./Quotes.module.css"
-import { useGetQuotesQuery } from "./quotesApiSlice"
+import styles from "./Quotes.module.scss"
+import { useGetQuotesQuery } from "../model/quotesApiSlice"
 
 const options = [5, 10, 20, 30]
 
@@ -28,6 +29,7 @@ export const Quotes = () => {
   if (isSuccess) {
     return (
       <div className={styles.container}>
+        <Link to="/">Back</Link>
         <h3>Select the Quantity of Quotes to Fetch:</h3>
         <select
           className={styles.select}
