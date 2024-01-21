@@ -1,10 +1,10 @@
-import { Link, Outlet, useLocation } from "react-router-dom"
-import logo from "shared/icons/logo.svg"
-import style from "./App.module.scss"
+import { Link, Outlet, useLocation } from 'react-router-dom';
+import logo from 'shared/icons/logo.svg';
+import style from './App.module.scss';
 
 const App = () => {
-  const { pathname } = useLocation()
-  console.log(pathname === "/")
+  const { pathname } = useLocation();
+  console.log(pathname === '/');
 
   return (
     <div className={style.App}>
@@ -12,7 +12,7 @@ const App = () => {
         <img src={logo} className={style.Applogo} alt="logo" />
         <p>header</p>
       </header>
-      {pathname === "/" && (
+      {pathname === '/' && (
         <>
           <Link to="/counter">Counter</Link>
           <Link to="/quotes">Quotes</Link>
@@ -24,7 +24,7 @@ const App = () => {
         <img src={logo} className={style.Applogo} alt="logo" />
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

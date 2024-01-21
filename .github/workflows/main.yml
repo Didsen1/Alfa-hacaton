@@ -22,8 +22,11 @@ jobs:
       - name: Build production project
         run: npm run build
         if: always()
-      - name: Linting
-        run: npm run lint
+      - name: Linting TS
+        run: npm run lint:ts
+        if: always()
+      - name: Linting SCSS
+        run: npm run lint:scss
         if: always()
       - name: Type checking
         run: npm run type-check
