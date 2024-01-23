@@ -4,7 +4,6 @@ import style from './App.module.scss';
 
 const App = () => {
   const { pathname } = useLocation();
-  console.log(pathname === '/');
 
   return (
     <div className={style.App}>
