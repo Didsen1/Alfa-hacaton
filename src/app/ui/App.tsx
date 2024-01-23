@@ -18,6 +18,7 @@ const App = () => {
         </>
       )}
       <Outlet />
+
       <footer>
         <p>footer</p>
         <img src={logo} className={style.Applogo} alt="logo" />
