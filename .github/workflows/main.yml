@@ -1,15 +1,15 @@
 name: linting, testing, building
-on: 
+on:
   push:
-    branches: [ dev ]
-  pull_request: 
-    branches: [ dev ]
-jobs: 
-  pipeline: 
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+jobs:
+  pipeline:
     runs-on: ubuntu-latest
-    strategy: 
+    strategy:
       matrix:
-        node-version: [ 17.x ]
+        node-version: [17.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -22,8 +22,11 @@ jobs:
       - name: Build production project
         run: npm run build
         if: always()
-      - name: Linting
-        run: npm run lint
+      - name: Linting TS
+        run: npm run lint:ts
+        if: always()
+      - name: Linting SCSS
+        run: npm run lint:scss
         if: always()
       - name: Type checking
         run: npm run type-check
@@ -31,6 +34,3 @@ jobs:
       - name: Testing
         run: npm run test
         if: always()
-
-
-

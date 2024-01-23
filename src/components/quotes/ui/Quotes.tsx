@@ -1,20 +1,21 @@
-import { useState } from "react"
-import styles from "./Quotes.module.css"
-import { useGetQuotesQuery } from "./quotesApiSlice"
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import styles from './Quotes.module.scss';
+import { useGetQuotesQuery } from '../model/quotesApiSlice';
 
-const options = [5, 10, 20, 30]
+const options = [5, 10, 20, 30];
 
 export const Quotes = () => {
-  const [numberOfQuotes, setNumberOfQuotes] = useState(10)
+  const [numberOfQuotes, setNumberOfQuotes] = useState(10);
   // Using a query hook automatically fetches data and returns query values
-  const { data, isError, isLoading, isSuccess } = useGetQuotesQuery(numberOfQuotes)
+  const { data, isError, isLoading, isSuccess } = useGetQuotesQuery(numberOfQuotes);
 
   if (isError) {
     return (
       <div>
         <h1>There was an error!!!</h1>
       </div>
-    )
+    );
   }
 
   if (isLoading) {
@@ -22,21 +23,22 @@ export const Quotes = () => {
       <div>
         <h1>Loading...</h1>
       </div>
-    )
+    );
   }
 
   if (isSuccess) {
     return (
       <div className={styles.container}>
+        <Link to="/">Back</Link>
         <h3>Select the Quantity of Quotes to Fetch:</h3>
         <select
           className={styles.select}
           value={numberOfQuotes}
-          onChange={e => {
-            setNumberOfQuotes(Number(e.target.value))
+          onChange={(e) => {
+            setNumberOfQuotes(Number(e.target.value));
           }}
         >
-          {options.map(option => (
+          {options.map((option) => (
             <option key={option} value={option}>
               {option}
             </option>
@@ -51,8 +53,8 @@ export const Quotes = () => {
           </blockquote>
         ))}
       </div>
-    )
+    );
   }
 
-  return null
-}
+  return null;
+};

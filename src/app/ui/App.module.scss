@@ -1,0 +1,19 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  height: 100vh;
+}
+
+.Applogo {
+  height: 10vmin;
+  background-color: none;
+  pointer-events: none;
+}
+
+.Appheader {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
