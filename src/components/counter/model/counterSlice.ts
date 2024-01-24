@@ -75,6 +75,8 @@ export const { selectCount, selectStatus } = counterSlice.selectors;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
+
+// prettier-ignore
 export const incrementIfOdd =
   (amount: number): AppThunk =>
     (dispatch, getState) => {
