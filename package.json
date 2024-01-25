@@ -18,7 +18,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@alfalab/core-components-icon-button": "^6.5.2",
     "@alfalab/core-components-icon-view": "^3.6.1",
+    "@alfalab/core-components-typography": "^4.5.0",
+    "@alfalab/icons-glyph": "^2.148.0",
     "@reduxjs/toolkit": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -47,6 +50,7 @@
     "stylelint-config-standard-scss": "^13.0.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.11",
+    "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^4.3.1",
     "vitest": "^1.2.0"
   }

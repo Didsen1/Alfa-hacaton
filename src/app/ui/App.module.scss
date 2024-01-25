@@ -3,17 +3,8 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  height: 100vh;
-}
-
-.Applogo {
-  height: 10vmin;
-  background-color: none;
-  pointer-events: none;
-}
-
-.Appheader {
-  display: flex;
-  align-items: start;
-  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: 1280px;
+  padding: 20px;
 }
