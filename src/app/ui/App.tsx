@@ -12,12 +12,6 @@ const App = () => {
         <img src={logo} className={style.Applogo} alt="logo" />
         <p>header</p>
       </header>
-      {pathname === '/' && (
-        <>
-          <Link to="/counter">Counter</Link>
-          <Link to="/quotes">Quotes</Link>
-        </>
-      )}
       <Outlet />
 
       <Footer/>

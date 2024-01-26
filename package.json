@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@alfalab/core-components-calendar": "^7.3.2",
+    "@alfalab/core-components-divider": "^3.2.0",
     "@alfalab/core-components-icon-view": "^3.6.1",
     "@reduxjs/toolkit": "^2.0.1",
     "react": "^18.2.0",

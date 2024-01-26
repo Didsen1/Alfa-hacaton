@@ -71,6 +71,14 @@
     react-virtuoso "^2.12.0"
     tslib "^2.4.0"
 
+"@alfalab/core-components-divider@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/@alfalab/core-components-divider/-/core-components-divider-3.2.0.tgz"
+  integrity sha512-kRle5Cnvy9wjfp5tAc1rk6S39F5NLOyWzRYz81AehbbN/opn616sX4lhbBqwo02Z0HgR0reFc+YWc6Xgg5niRA==
+  dependencies:
+    classnames "^2.3.1"
+    tslib "^2.4.0"
+
 "@alfalab/core-components-global-store@^2.1.0":
   version "2.1.0"
   resolved "http://npm.prakticum-team.ru/@alfalab/core-components-global-store/-/core-components-global-store-2.1.0.tgz"
