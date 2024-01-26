@@ -1,5 +1,6 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import logo from 'shared/icons/logo.svg';
+import Footer from 'widgets/footer';
 import style from './App.module.scss';
 
 const App = () => {
@@ -19,10 +20,7 @@ const App = () => {
       )}
       <Outlet />
 
-      <footer>
-        <p>footer</p>
-        <img src={logo} className={style.Applogo} alt="logo" />
-      </footer>
+      <Footer/>
     </div>
   );
 };
