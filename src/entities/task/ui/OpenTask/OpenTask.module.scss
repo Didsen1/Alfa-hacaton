@@ -1,0 +1,43 @@
+.OpenTask {
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .dateWrapper {
+    display: flex;
+    align-items: center;
+
+    span {
+      width: 133px;
+      padding: 0 7px;
+      color: #57a37f;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  .font {
+    font-family: inherit !important;
+
+    :only-child {
+      font-family: inherit !important;
+    }
+  }
+
+  .collapse > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .sendButton {
+    background-color: #F0F0F0;
+    height: 56px;
+    width: 56px;
+    border-radius: 100%;
+  }
+}

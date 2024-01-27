@@ -18,9 +18,14 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@alfalab/core-components-collapse": "^4.4.0",
     "@alfalab/core-components-icon-button": "^6.5.2",
     "@alfalab/core-components-icon-view": "^3.6.1",
+    "@alfalab/core-components-input": "^14.2.0",
+    "@alfalab/core-components-side-panel": "^5.1.1",
+    "@alfalab/core-components-textarea": "^8.5.0",
     "@alfalab/core-components-typography": "^4.5.0",
+    "@alfalab/core-components-universal-date-input": "^1.5.0",
     "@alfalab/icons-android": "^1.9.0",
     "@alfalab/icons-glyph": "^2.148.0",
     "@reduxjs/toolkit": "^2.0.1",
