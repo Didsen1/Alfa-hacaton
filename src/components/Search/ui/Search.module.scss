@@ -1,0 +1,33 @@
+.Search {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  gap: 11px;
+  position: relative;
+  background-color: #f0f0f0;
+  color: #8f8f8f;
+
+  input {
+    display: block;
+    border-radius: 12px;
+    position: absolute;
+    padding: 8px 12px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: none;
+    box-sizing: border-box;
+    border: none;
+    height: 100%;
+    width: 100%;
+    color: #8f8f8f;
+    font-family: inherit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.48px;
+  }
+}

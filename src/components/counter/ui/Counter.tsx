@@ -21,7 +21,7 @@ export const Counter = () => {
   const incrementValue = Number(incrementAmount) || 0;
 
   return (
-    <div>
+    <div style={{ width: '100%' }}>
       <Link to="/">Back</Link>
       <div className={styles.row}>
         <button type="button" className={styles.button} aria-label="Decrement value" onClick={() => dispatch(decrement())}>
