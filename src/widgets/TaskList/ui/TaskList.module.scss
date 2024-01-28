@@ -1,0 +1,39 @@
+.tasks {
+  max-width: 925px;
+  margin: 24px auto 100px;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+
+  .conteiner {
+    margin: 0 auto 20px;
+  }
+
+  .collapse {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  .collapse_open {
+    height: auto;
+    opacity: 1;
+  }
+
+  .table {
+    padding: 0;
+    display: flex;
+    max-width: 925px;
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: none;
+  }
+
+  .tableHead {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}

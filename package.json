@@ -18,6 +18,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@alfalab/core-components-status": "^3.2.0",
+    "@alfalab/core-components-table": "^2.4.14",
     "@alfalab/core-components-calendar": "^7.3.2",
     "@alfalab/core-components-divider": "^3.2.0",
     "@alfalab/core-components-icon-button": "^6.5.2",
