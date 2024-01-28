@@ -15,7 +15,7 @@ const TaskList: FC = () => {
     all: false,
     current: false,
   });
-  const itemRef = useRef<HTMLDivElement>(null);
+  const itemRef = useRef<HTMLTableElement>(null);
 
   const toggleExpanded = useCallback((section: keyof ExpandedSections) => {
     setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
@@ -27,8 +27,8 @@ const TaskList: FC = () => {
         <AccordionButton text="Все задачи" expanded={expandedSections.all} toggleExpanded={() => toggleExpanded('all')} />
         <div
           className={`${styles.collapse} ${expandedSections.all ? styles.collapse_open : ''}`}
-          style={expandedSections.all ? { height: itemRef.current.scrollHeight } : { height: '0px' }}
-        >
+          style={expandedSections.all ? { height: itemRef?.current?.scrollHeight } : { height: '0px' }}
+        > {/* @ts-ignore */}
           <Table className={styles.table} ref={itemRef}>
             <Table.THead>
               <Table.THeadCell width="300px" title="Название" className={styles.tableHead}>
@@ -44,8 +44,8 @@ const TaskList: FC = () => {
                 Дедлайн
               </Table.THeadCell>
             </Table.THead>
-            {data.map((item) => (
-              <Task key={item.id} i={item} />
+            {data.map((task) => (
+              <Task key={task.task_id} {...task} />
             ))}
           </Table>
         </div>
