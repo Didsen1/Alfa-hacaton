@@ -2,8 +2,9 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from 'widgets/Header';
 import logo from 'shared/icons/alfa-logo.svg';
 import Sidebar from 'widgets/Sidebar';
-import { OpenTask } from 'entities/task';
+import { OpenTask } from 'entities/tasks';
 import Navbar from 'widgets/Navbar';
+import CreateTask from 'entities/tasks/ui/CreateTask/CreateTask';
 import style from './App.module.scss';
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
     <>
       <div className={style.App}>
         <Header />
+        
         <main>
           <Navbar />
           <Outlet />
@@ -23,8 +25,13 @@ const App = () => {
           <img src={logo} className={style.Applogo} alt="logo" />
         </footer>
       </div>
+
       <Sidebar>
-        <OpenTask planId="12" taskId="1" />
+        <CreateTask />
+      </Sidebar>
+
+      <Sidebar>
+        <OpenTask planId="12" taskId="3" />
       </Sidebar>
     </>
   );

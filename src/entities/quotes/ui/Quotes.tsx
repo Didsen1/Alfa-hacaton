@@ -1,19 +1,25 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import styles from './Quotes.module.scss';
-import { useGetQuotesQuery } from '../model/quotesApiSlice';
+import { fetchQuotesWithLimit } from '../model/quotesApi';
 
 const options = [5, 10, 20, 30];
 
 export const Quotes = () => {
   const [numberOfQuotes, setNumberOfQuotes] = useState(10);
   // Using a query hook automatically fetches data and returns query values
-  const { data, isError, isLoading, isSuccess } = useGetQuotesQuery(numberOfQuotes);
+  const dispatch = useAppDispatch();
+  const { error, isError, isLoading, quotes } = useAppSelector((state) => state.quotes);
+
+  useEffect(() => {
+    dispatch(fetchQuotesWithLimit(numberOfQuotes));
+  }, [dispatch, numberOfQuotes]);
 
   if (isError) {
     return (
       <div>
-        <h1>There was an error!!!</h1>
+        <h1>There was an error!!! {`${error[-1]}`}</h1>
       </div>
     );
   }
@@ -26,7 +32,7 @@ export const Quotes = () => {
     );
   }
 
-  if (isSuccess) {
+  if (!isError) {
     return (
       <div className={styles.container}>
         <Link to="/">Back</Link>
@@ -44,7 +50,7 @@ export const Quotes = () => {
             </option>
           ))}
         </select>
-        {data.quotes.map(({ author, quote, id }) => (
+        {quotes?.map(({ author, quote, id }) => (
           <blockquote key={id}>
             &ldquo;{quote}&rdquo;
             <footer>

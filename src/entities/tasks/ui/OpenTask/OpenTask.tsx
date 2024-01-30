@@ -1,11 +1,11 @@
 import { type FC } from 'react';
-import { useGetTaskQuery } from 'entities/task/model/taskApiSlice';
 import { SidePanelDesktop } from '@alfalab/core-components-side-panel/desktop';
 import { Input } from '@alfalab/core-components-input';
 import { UniversalDateInput } from '@alfalab/core-components-universal-date-input';
 import CalendarIcon from 'shared/icons/calendar-icon.svg?react';
 import { Textarea } from '@alfalab/core-components-textarea';
 import { Collapse } from '@alfalab/core-components-collapse';
+import { Button } from '@alfalab/core-components-button';
 import { IconButton } from '@alfalab/core-components-icon-button';
 import { PaperAirplaneMIcon } from '@alfalab/icons-glyph/PaperAirplaneMIcon';
 import style from './OpenTask.module.scss';
@@ -51,8 +51,35 @@ const MOCK_TASK: Task = {
   ],
 };
 
+type UserRole = 'admin' | 'user';
+
 const OpenTask: FC<OpenTaskProps> = ({ planId, taskId }) => {
-  const { isLoading, isError, isFetching, data: task } = useGetTaskQuery({ planId, taskId });
+
+  const userRole: UserRole = 'user';
+
+  
+  const renderFooterButtons = () => {
+    if (userRole === 'user') {
+      return MOCK_TASK?.status === 'В работе' ? (
+        <>
+          <Button view='primary'>На проверку</Button>
+          <Button>Отменить</Button>
+        </>
+      ) : null;
+    }
+
+    if (userRole === 'admin') {
+      return MOCK_TASK?.status === 'На проверке' ? (
+        <>
+          <Button view='primary'>Принять</Button>
+          <Button>На доработку</Button>
+        </>
+      ) : null;
+    }
+
+    return null;
+  };
+
 
   return (
     <div className={style.OpenTask}>
@@ -85,9 +112,12 @@ const OpenTask: FC<OpenTaskProps> = ({ planId, taskId }) => {
           ))}
         </Collapse>
       </SidePanelDesktop.Content>
-      <SidePanelDesktop.Footer sticky>
-        <CommentInput />
-        <IconButton className={style.sendButton} icon={PaperAirplaneMIcon} />
+      <SidePanelDesktop.Footer className={style.footer} sticky>
+        <div className={style.commentInputWrapper}>
+          <CommentInput />
+          <IconButton className={style.sendButton} icon={PaperAirplaneMIcon} />
+        </div>
+        <div className={style.footerButtonsWrapper}>{renderFooterButtons()}</div>
       </SidePanelDesktop.Footer>
     </div>
   );

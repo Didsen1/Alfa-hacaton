@@ -1,7 +1,7 @@
 import { type FC } from 'react';
-import { type comment } from 'entities/task/model/types/comment';
 import ChainIcon from 'shared/icons/chain-icon.svg?react';
 import DocumentIcon from 'shared/icons/document-icon.svg?react';
+import { type comment } from '../../model/types/comment';
 import style from './Comment.module.scss';
 
 interface CommentProps extends comment {}
