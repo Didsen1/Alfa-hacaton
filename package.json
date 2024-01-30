@@ -22,6 +22,8 @@
     "@alfalab/core-components-divider": "^3.2.0",
     "@alfalab/core-components-icon-button": "^6.5.2",
     "@alfalab/core-components-icon-view": "^3.6.1",
+    "@alfalab/core-components-status": "^3.2.0",
+    "@alfalab/core-components-table": "^2.4.14",
     "@alfalab/core-components-typography": "^4.5.0",
     "@alfalab/icons-android": "^1.9.0",
     "@alfalab/icons-glyph": "^2.148.0",

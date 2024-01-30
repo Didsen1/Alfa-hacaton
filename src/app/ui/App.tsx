@@ -1,8 +1,8 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from 'widgets/Header';
 import Footer from 'widgets/footer';
-import logo from 'shared/icons/alfa-logo.svg';
 import Navbar from 'widgets/Navbar';
+import EmployeeList from 'components/EmployeeList';
 import style from './App.module.scss';
 
 const App = () => {
@@ -14,9 +14,10 @@ const App = () => {
       <main>
         <Navbar />
         <Outlet />
+        <EmployeeList/>
       </main>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 };
