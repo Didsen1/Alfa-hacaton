@@ -1,6 +1,6 @@
 import { useState, type FC, type ReactNode } from 'react';
 import { SidePanelDesktop } from '@alfalab/core-components-side-panel/desktop';
-import { createPortal } from 'react-dom';
+import ReactDOM from 'react-dom';
 import style from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -13,14 +13,20 @@ const Sidebar: FC<SidebarProps> = ({ children }) => {
     setIsOpen(false);
   };
   const content = (
-    <SidePanelDesktop onClose={handleClose} nativeScrollbar={false} hasCloser className={style.Sidebar} open={isOpen}>
+    <SidePanelDesktop
+      onClose={handleClose}
+      nativeScrollbar={false}
+      hasCloser
+      className={style.Sidebar}
+      open={isOpen}
+    >
       {children}
     </SidePanelDesktop>
   );
 
   const root = document.getElementById('sidebar');
 
-  return createPortal(content, root as HTMLElement);
+  return ReactDOM.createPortal(content, root as HTMLElement);
 };
 
 export default Sidebar;
