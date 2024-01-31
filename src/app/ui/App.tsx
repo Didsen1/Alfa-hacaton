@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from 'widgets/Header';
 import Sidebar from 'widgets/Sidebar';
-import { OpenTask } from 'entities/tasks';
+import { OpenTask} from 'entities/tasks';
 import Footer from 'widgets/footer';
 import Navbar from 'widgets/Navbar';
 import style from './App.module.scss';
