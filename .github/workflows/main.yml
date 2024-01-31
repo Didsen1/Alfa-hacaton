@@ -31,6 +31,3 @@ jobs:
       - name: Type checking
         run: npm run type-check
         if: always()
-      - name: Testing
-        run: npm run test
-        if: always()

@@ -1,0 +1,48 @@
+.Comment {
+  width: 100%;
+  background-color: #e7e8ea;
+  border-radius: 0 8px 8px;
+  padding: 20px 12px 20px 20px;
+  box-sizing: border-box;
+  min-height: 40px;
+
+  .body {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  .text {
+    color: #000;
+  }
+
+  .link {
+    color: #3e28c7;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .file {
+    color: #3e28c7;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .linkWrapper {
+    display: flex;
+    gap: 8px;
+  }
+
+  .authorWrapper {
+    display: flex;
+    margin-top: 8px;
+    gap: 8px;
+    justify-content: end;
+    color: #8f8f8f;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+}

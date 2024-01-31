@@ -1,8 +1,8 @@
 import App from 'app/ui/App';
-import { Counter } from 'components/counter';
-import { Quotes } from 'components/quotes';
+import { Quotes } from 'entities/quotes';
 import { ErrorPage } from 'pages/ErrorPage';
 import { createBrowserRouter } from 'react-router-dom';
+import Analytics from 'widgets/Analytics';
 
 export const router = createBrowserRouter([
   {
@@ -11,8 +11,8 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'counter',
-        element: <Counter />,
+        path: 'analytics',
+        element: <Analytics />,
       },
       {
         path: 'quotes',
