@@ -6,20 +6,30 @@ import CheckmarkMIcon from '@alfalab/icons-glyph/CheckmarkMIcon';
 import CrossMIcon from '@alfalab/icons-glyph/CrossMIcon';
 import { Button } from '@alfalab/core-components-button';
 import ContainerMIcon from '@alfalab/icons-glyph/ContainerMIcon';
-import style from './PinFileModal.module.scss';
+import style from './PinFile.module.scss';
 
-interface PinFileModalProps {}
+interface PinFileProps {}
 
-const PinFileModal: FC<PinFileModalProps> = () => {
+const PinFile: FC<PinFileProps> = () => {
   const [files, setFiles] = useState<File[]>([]);
+  const [error, setError] = useState<string>('');
   const [downloadStatus, setDownloadStatus] = useState('success');
 
-  const handleDrop = (files: FileList) => {
-    setFiles(Array.from(files));
+  const checkFileSize = (files: File[]) => {
+    if (files[0].size / 1024 > 10240) {
+      setError('Размер файла превышат 10 мегабайт');
+    } else {
+      setFiles(files);
+      setError('');
+    }
   };
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>, payload: { files: File[] }) => {
-    setFiles(payload.files);
+  const handleDrop = (files: FileList) => {
+    checkFileSize(Array.from(files));
+  };
+
+  const handleAttachChange = (event: React.ChangeEvent<HTMLInputElement>, payload: { files: File[] }) => {
+    checkFileSize(payload.files);
   };
 
   // const onDownloadStatusChange = (_, payload) => {
@@ -57,11 +67,11 @@ const PinFileModal: FC<PinFileModalProps> = () => {
       </Modal.Header>
       <Modal.Content className={style.body}>
         <Dropzone error={isError} onDrop={handleDrop} block>
-          {files?.length
-            ? downloadStatus === 'success'
-              ? statusDropzone('Успех', CheckmarkMIcon)
-              : statusDropzone('Ошибка', CrossMIcon)
-            : statusDropzone('Перетащите файл', ContainerMIcon)}
+          {files?.length && downloadStatus === 'success'
+            ? statusDropzone('Успех', CheckmarkMIcon)
+            : error
+              ? statusDropzone(error, CrossMIcon)
+              : statusDropzone('Перетащите файл', ContainerMIcon)}
         </Dropzone>
       </Modal.Content>
       <Modal.Footer className={style.footer}>
@@ -69,11 +79,12 @@ const PinFileModal: FC<PinFileModalProps> = () => {
           className={style.footerAttach}
           size="m"
           value={files}
-          onChange={onChange}
+          maxFilenameLength={30}
+          onChange={handleAttachChange}
           name="file"
           onClear={() => setFiles([])}
         />
-        <Button className={style.footerButton} view="primary">
+        <Button disabled={!files.length || !!error} className={style.footerButton} view="primary">
           Прикрепить
         </Button>
       </Modal.Footer>
@@ -81,4 +92,4 @@ const PinFileModal: FC<PinFileModalProps> = () => {
   );
 };
 
-export default PinFileModal;
+export default PinFile;

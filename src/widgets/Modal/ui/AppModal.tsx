@@ -1,21 +1,21 @@
-import { type ReactNode, type FC, useState } from 'react';
+import { type ReactNode, type FC, type Dispatch, type SetStateAction, useCallback } from 'react';
 import { Modal } from '@alfalab/core-components-modal';
 import { createPortal } from 'react-dom';
 import style from './AppModal.module.scss';
 
 interface ModalProps {
   children: ReactNode;
-  isOpen?: boolean;
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const AppModal: FC<ModalProps> = ({ children, isOpen = true }) => {
-  const [isModalOpen, setIsOpen] = useState(true);
-
-  const handleClose = () => {
+const AppModal: FC<ModalProps> = ({ children, isOpen, setIsOpen }) => {
+  const onClose = useCallback(() => {
     setIsOpen(false);
-  };
+  }, [setIsOpen]);
+
   const content = (
-    <Modal open={isModalOpen} onClose={handleClose} hasCloser className={style.AppModal}>
+    <Modal open={isOpen} onClose={onClose} hasCloser className={style.AppModal}>
       {children}
     </Modal>
   );

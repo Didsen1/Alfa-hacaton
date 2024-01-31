@@ -26,6 +26,7 @@
     "@alfalab/core-components-icon-button": "^6.5.2",
     "@alfalab/core-components-icon-view": "^3.6.1",
     "@alfalab/core-components-input": "^14.2.0",
+    "@alfalab/core-components-input-autocomplete": "^11.4.0",
     "@alfalab/core-components-side-panel": "^5.1.1",
     "@alfalab/core-components-textarea": "^8.5.0",
     "@alfalab/core-components-typography": "^4.5.0",
