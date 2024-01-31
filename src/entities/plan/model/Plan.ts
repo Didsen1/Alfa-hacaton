@@ -4,7 +4,6 @@ export interface Plan {
   plan_id: number;
   expired_at: string;
   status: status;
-  aim: string;
   employee: employee;
 }
 

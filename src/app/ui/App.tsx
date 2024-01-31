@@ -4,33 +4,23 @@ import Sidebar from 'widgets/Sidebar';
 import { OpenTask } from 'entities/tasks';
 import Footer from 'widgets/footer';
 import Navbar from 'widgets/Navbar';
-import PlanPanel from "widgets/PlanPanel"
-import CreateTask from 'entities/tasks/ui/CreateTask/CreateTask';
+import EmployeeList from 'components/EmployeeList';
 import style from './App.module.scss';
 
 const App = () => {
   const { pathname } = useLocation();
 
   return (
-    <>
-      <div className={style.App}>
-        <Header />
+    <div className={style.App}>
+      <Header />
+      <main>
+        <Navbar />
+        <Outlet />
+        <EmployeeList/>
+      </main>
 
-        <main>
-          <Navbar />
-          <Outlet />
-        </main>
-
-        <Footer />
-      </div>
-      <Sidebar>
-        <CreateTask />
-      </Sidebar>
-
-      <Sidebar>
-        <OpenTask planId="12" taskId="3" />
-      </Sidebar>
-    </>
+      <Footer />
+    </div>
   );
 };
 

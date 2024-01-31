@@ -9,7 +9,7 @@ interface PlanProps extends Plan { }
 
 
 /* eslint-disable camelcase */
-const PlanPanel: FC<PlanProps> = ({ expired_at, aim, employee, }) => (
+const PlanPanel: FC<PlanProps> = ({ expired_at, employee, }) => (
   <div className={style.panelWrapper}>
     <div className={style.employeeWrapper}>
       <Circle imageUrl={employee.img} />
@@ -20,7 +20,7 @@ const PlanPanel: FC<PlanProps> = ({ expired_at, aim, employee, }) => (
     </div>
     <div className={style.aimWrapper}>
       <Typography.Text tag="p" className={style.aimTitle}>Цель ИПР</Typography.Text>
-      <Typography.Text tag="p" className={style.aim}>{aim}</Typography.Text>
+      <Typography.Text tag="p" className={style.aim}>?</Typography.Text>
     </div>
     <div className={style.expired_atWrapper}>
       <Typography.Text tag="p" className={style.expired_atTitle}>Срок ИПР</Typography.Text>
