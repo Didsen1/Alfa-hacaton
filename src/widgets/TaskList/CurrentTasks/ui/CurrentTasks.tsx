@@ -1,4 +1,4 @@
-import type { RefObject , type FC } from 'react';
+import type { RefObject, FC } from 'react';
 import { Table } from '@alfalab/core-components-table';
 import Task from 'widgets/TaskList/Task/ui/Task';
 import { type Task as TTask } from 'entities/task/model/Task';

@@ -1,4 +1,4 @@
-import type { RefObject , type FC } from 'react';
+import type { RefObject, FC } from 'react';
 import { Table } from '@alfalab/core-components-table';
 import Task from 'widgets/TaskList/Task/ui/Task';
 import { type Task as TTask } from 'entities/task/model/Task';
@@ -13,16 +13,16 @@ const AllTasks: FC<AllTasksProps> = ({ itemRef, data }) => (
   <Table className={styles.table} ref={itemRef}>
     <Table.THead>
       <Table.THeadCell width="300px" title="Название" className={styles.tableHead}>
-          Название
+        Название
       </Table.THeadCell>
       <Table.THeadCell width="312px" title="Описание" className={styles.tableHead}>
-          Описание
+        Описание
       </Table.THeadCell>
       <Table.THeadCell width="172px" title="Статус" className={styles.tableHead}>
-          Статус
+        Статус
       </Table.THeadCell>
       <Table.THeadCell width="141px" title="Дедлайн" className={styles.tableHead}>
-          Дедлайн
+        Дедлайн
       </Table.THeadCell>
     </Table.THead>
     <Table.TBody>
