@@ -53,7 +53,8 @@ const TaskList: FC = () => {
 
   const getCollapseClassName = (isExpanded: boolean) => `${styles.collapse} ${isExpanded ? styles.collapse_open : ''}`;
 
-  const getCollapseStyle = (isExpanded: boolean, ref: React.RefObject<HTMLElement>) => isExpanded ? { height: ref.current?.scrollHeight } : { height: '0px' };
+  const getCollapseStyle = (isExpanded: boolean, ref: React.RefObject<HTMLElement>) =>
+    isExpanded ? { height: ref.current?.scrollHeight } : { height: '0px' };
 
   const toggleExpanded = useCallback((section: keyof ExpandedSections) => {
     setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
@@ -65,7 +66,7 @@ const TaskList: FC = () => {
     <div className={styles.tasks}>
       <div className={styles.filter}>
         <FilterCalendar />
-        <FilterStatus setFilteredStatus={(newStatuses) => setFilteredStatus(newStatuses)} />
+        <FilterStatus setFilteredStatus={setFilteredStatus} />
       </div>
       <div className={styles.conteiner}>
         <AccordionButton text="Все задачи" expanded={expandedSections.all} toggleExpanded={() => toggleExpanded('all')} />
