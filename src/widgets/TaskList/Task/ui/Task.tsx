@@ -16,32 +16,30 @@ enum color {
 }
 
 const Task: FC<TaskProps> = ({ comments, created_at, description, expires_at, name, status, task_id }) => (
-  <Table.TBody>
-    <Table.TRow className={styles.taskContainer}>
-      <Table.TCell>
-        <Typography.Text view="primary-small" tag="div" className={styles.title}>
-          {name}
-        </Typography.Text>
-      </Table.TCell>
-      <Table.TCell>
-        <Typography.Text view="primary-small" tag="div" className={styles.description}>
-          {description}
-        </Typography.Text>
-      </Table.TCell>
-      <Table.TCell>
-        <Typography.Text view="primary-small" tag="div">
-          <Status className={styles.status} color={color[status]} view="soft">
-            {status}
-          </Status>
-        </Typography.Text>
-      </Table.TCell>
-      <Table.TCell>
-        <Typography.Text view="primary-small" tag="div" className={styles.deadline}>
-          {expires_at}
-        </Typography.Text>
-      </Table.TCell>
-    </Table.TRow>
-  </Table.TBody>
+  <Table.TRow className={styles.taskContainer}>
+    <Table.TCell>
+      <Typography.Text view="primary-small" tag="div" className={styles.title}>
+        {name}
+      </Typography.Text>
+    </Table.TCell>
+    <Table.TCell>
+      <Typography.Text view="primary-small" tag="div" className={styles.description}>
+        {description}
+      </Typography.Text>
+    </Table.TCell>
+    <Table.TCell>
+      <Typography.Text view="primary-small" tag="div">
+        <Status className={styles.status} color={color[status]} view="soft">
+          {status}
+        </Status>
+      </Typography.Text>
+    </Table.TCell>
+    <Table.TCell>
+      <Typography.Text view="primary-small" tag="div" className={styles.deadline}>
+        {expires_at}
+      </Typography.Text>
+    </Table.TCell>
+  </Table.TRow>
 );
 
 export default Task;
