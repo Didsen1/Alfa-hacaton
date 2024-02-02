@@ -10,8 +10,8 @@ interface AccordionButtonProps {
 }
 
 const AccordionButton: FC<AccordionButtonProps> = ({ text, expanded, toggleExpanded }) => (
-  <div className={styles.head}>
-    <ChevronRightMIcon onClick={toggleExpanded} className={`${styles.icon} ${expanded ? styles.icon_active : ''}`} />
+  <div className={styles.head} onClick={toggleExpanded}>
+    <ChevronRightMIcon className={`${styles.icon} ${expanded ? styles.icon_active : ''}`} />
     <Typography.Text view="primary-small" tag="span" className={styles.text}>
       {text}
     </Typography.Text>

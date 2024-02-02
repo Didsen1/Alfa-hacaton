@@ -1,4 +1,5 @@
 $color-text: #8f8f8f;
+$cursor: pointer;
 
 .head {
   padding-left: 20px;
@@ -14,7 +15,7 @@ $color-text: #8f8f8f;
     height: 16px;
     color: $color-text;
     transition: transform 0.3s;
-    cursor: pointer;
+    cursor: $cursor;
   }
 
   .icon_active {
@@ -25,5 +26,6 @@ $color-text: #8f8f8f;
     margin: 0;
     font-size: 16px;
     color: $color-text;
+    cursor: $cursor;
   }
 }

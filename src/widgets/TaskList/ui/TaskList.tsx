@@ -13,6 +13,11 @@ interface ExpandedSections {
   current: boolean;
 }
 
+const parseDate = (dateStr: string): Date => {
+  const [day, month, year] = dateStr.split('.').map(Number);
+  return new Date(year, month - 1, day);
+};
+
 const filterTasksByStatus = (tasks: Task[], filteredStatus: { key: string; content: string }[]): Task[] => {
   const statusList = filteredStatus.map((status) => status.content.toLowerCase());
   if (statusList.length === 0) {
@@ -21,12 +26,20 @@ const filterTasksByStatus = (tasks: Task[], filteredStatus: { key: string; conte
   return tasks.filter((task) => statusList.includes(task.status.toLowerCase()));
 };
 
-const parseDate = (dateStr: string): Date => {
-  const [day, month, year] = dateStr.split('.').map(Number);
-  return new Date(year, month - 1, day);
+const filterTasksByPeriod = (
+  tasks: Task[],
+  filteredPeriod: { selectedFromDate: Object; selectedToDate: Object }
+): Task[] => {
+  if (!filteredPeriod.selectedFromDate || !filteredPeriod.selectedToDate) {
+    return tasks;
+  }
+  return tasks.filter((task) => {
+    const expiresAtDate = parseDate(task.expires_at);
+    return expiresAtDate >= filteredPeriod.selectedFromDate && expiresAtDate <= filteredPeriod.selectedToDate;
+  });
 };
 
-const filterTasks = (tasks: Task[]): Task[] => {
+const filterCurrentTasks = (tasks: Task[]): Task[] => {
   const currentDate = new Date();
 
   return tasks.filter((task) => {
@@ -44,12 +57,13 @@ const filterTasks = (tasks: Task[]): Task[] => {
 
 const TaskList: FC = () => {
   const [expandedSections, setExpandedSections] = useState<ExpandedSections>({
-    all: false,
-    current: false,
+    all: true,
+    current: true,
   });
   const allTasksRef = useRef<HTMLTableElement>(null);
   const currentTasksRef = useRef<HTMLTableElement>(null);
   const [filteredStatus, setFilteredStatus] = useState<{ key: string; content: string }[]>([]);
+  const [filteredPeriod, setFilteredPeriod] = useState<{ selectedFrom: number; selectedTo: number }[]>([]);
   const [allCollapseStyle, setAllCollapseStyle] = useState({ height: '0px' });
   const [currentCollapseStyle, setCurrentCollapseStyle] = useState({ height: '0px' });
 
@@ -68,6 +82,8 @@ const TaskList: FC = () => {
     setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
   }, []);
 
+  const filteredTasks = filterTasksByPeriod(filterTasksByStatus(data, filteredStatus), filteredPeriod);
+
   useEffect(() => {
     updateCollapseHeight(expandedSections.all, allTasksRef, setAllCollapseStyle);
     updateCollapseHeight(expandedSections.current, currentTasksRef, setCurrentCollapseStyle);
@@ -79,18 +95,18 @@ const TaskList: FC = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [expandedSections.all, expandedSections.current, filteredStatus]);
+  }, [expandedSections.all, expandedSections.current, filteredStatus, filteredPeriod]);
 
   return (
     <div className={styles.tasks}>
       <div className={styles.filter}>
-        <FilterCalendar />
+        <FilterCalendar setFilteredPeriod={setFilteredPeriod} />
         <FilterStatus setFilteredStatus={setFilteredStatus} />
       </div>
       <div className={styles.conteiner}>
         <AccordionButton text="Все задачи" expanded={expandedSections.all} toggleExpanded={() => toggleExpanded('all')} />
         <div className={getCollapseClassName(expandedSections.all)} style={allCollapseStyle}>
-          <AllTasks itemRef={allTasksRef} data={filterTasksByStatus(data, filteredStatus)} />
+          <AllTasks itemRef={allTasksRef} data={filteredTasks} />
         </div>
       </div>
       <div className={styles.conteiner}>
@@ -100,7 +116,7 @@ const TaskList: FC = () => {
           toggleExpanded={() => toggleExpanded('current')}
         />
         <div className={getCollapseClassName(expandedSections.current)} style={currentCollapseStyle}>
-          <CurrentTasks itemRef={currentTasksRef} data={filterTasks(data)} />
+          <CurrentTasks itemRef={currentTasksRef} data={filterCurrentTasks(data)} />
         </div>
       </div>
     </div>

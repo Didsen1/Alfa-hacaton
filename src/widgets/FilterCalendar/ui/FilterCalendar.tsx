@@ -4,12 +4,14 @@ import { Popover } from '@alfalab/core-components-popover';
 import { Calendar } from '@alfalab/core-components-calendar';
 import usePeriod from 'utils/hooks/usePeriod';
 
-const FilterCalendar = () => {
+const FilterCalendar = ({ setFilteredPeriod }) => {
   const { selectedFrom, selectedTo, updatePeriod } = usePeriod();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState();
   const [filterTag, setFilterTag] = useState(null);
   const calendarRef = useRef(null);
+
+  console.log({ selectedTo, selectedFrom });
 
   const handleOpen = () => setOpen(!open);
   const handleClear = () => {
@@ -65,9 +67,10 @@ const FilterCalendar = () => {
     if (selectedFrom && selectedTo) {
       const selectedFromDate = new Date(selectedFrom);
       const selectedToDate = new Date(selectedTo);
+      setFilteredPeriod({ selectedFromDate, selectedToDate });
       return `${getDateString(selectedFromDate)} - ${getDateString(selectedToDate)}`;
     }
-    return '';
+    return setFilteredPeriod({});
   }, [selectedFrom, selectedTo]);
 
   const checkedContent = (
