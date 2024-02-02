@@ -1,4 +1,4 @@
-import { useState, type FC, useRef, useCallback } from 'react';
+import { useState, type FC, useRef, useCallback, useEffect } from 'react';
 import AccordionButton from 'widgets/TaskList/AccordionButton/ui/AccordionButton';
 import { type Task } from 'entities/task/model/Task';
 import FilterCalendar from 'widgets/FilterCalendar/ui/FilterCalendar';
@@ -50,17 +50,36 @@ const TaskList: FC = () => {
   const allTasksRef = useRef<HTMLTableElement>(null);
   const currentTasksRef = useRef<HTMLTableElement>(null);
   const [filteredStatus, setFilteredStatus] = useState<{ key: string; content: string }[]>([]);
+  const [allCollapseStyle, setAllCollapseStyle] = useState({ height: '0px' });
+  const [currentCollapseStyle, setCurrentCollapseStyle] = useState({ height: '0px' });
 
   const getCollapseClassName = (isExpanded: boolean) => `${styles.collapse} ${isExpanded ? styles.collapse_open : ''}`;
 
-  const getCollapseStyle = (isExpanded: boolean, ref: React.RefObject<HTMLElement>) =>
-    isExpanded ? { height: ref.current?.scrollHeight } : { height: '0px' };
+  const updateCollapseHeight = (
+    isExpanded: boolean,
+    ref: React.RefObject<HTMLElement>,
+    setCollapseStyle: React.Dispatch<React.SetStateAction<{ height: string }>>
+  ) => {
+    const height = isExpanded ? `${ref.current?.scrollHeight}px` : '0px';
+    setCollapseStyle({ height });
+  };
 
   const toggleExpanded = useCallback((section: keyof ExpandedSections) => {
     setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
   }, []);
 
-  console.log(filteredStatus);
+  useEffect(() => {
+    updateCollapseHeight(expandedSections.all, allTasksRef, setAllCollapseStyle);
+    updateCollapseHeight(expandedSections.current, currentTasksRef, setCurrentCollapseStyle);
+    const handleResize = () => {
+      updateCollapseHeight(expandedSections.all, allTasksRef, setAllCollapseStyle);
+      updateCollapseHeight(expandedSections.current, currentTasksRef, setCurrentCollapseStyle);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [expandedSections.all, expandedSections.current, filteredStatus]);
 
   return (
     <div className={styles.tasks}>
@@ -70,10 +89,7 @@ const TaskList: FC = () => {
       </div>
       <div className={styles.conteiner}>
         <AccordionButton text="Все задачи" expanded={expandedSections.all} toggleExpanded={() => toggleExpanded('all')} />
-        <div
-          className={getCollapseClassName(expandedSections.all)}
-          style={getCollapseStyle(expandedSections.all, allTasksRef)}
-        >
+        <div className={getCollapseClassName(expandedSections.all)} style={allCollapseStyle}>
           <AllTasks itemRef={allTasksRef} data={filterTasksByStatus(data, filteredStatus)} />
         </div>
       </div>
@@ -83,10 +99,7 @@ const TaskList: FC = () => {
           expanded={expandedSections.current}
           toggleExpanded={() => toggleExpanded('current')}
         />
-        <div
-          className={getCollapseClassName(expandedSections.current)}
-          style={getCollapseStyle(expandedSections.current, currentTasksRef)}
-        >
+        <div className={getCollapseClassName(expandedSections.current)} style={currentCollapseStyle}>
           <CurrentTasks itemRef={currentTasksRef} data={filterTasks(data)} />
         </div>
       </div>
