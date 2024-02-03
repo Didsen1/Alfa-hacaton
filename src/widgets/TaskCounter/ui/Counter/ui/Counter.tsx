@@ -6,15 +6,13 @@ interface CounterProps {
   quantity: string;
 }
 
-const Counter: FC<CounterProps> = ({ title, quantity }) => {
-  return (
-    <div className={styles.counter}>
-      <div className={styles.conteiner}>
-        <p className={styles.title}>{title}</p>
-        <span className={styles.quantity}>{quantity}</span>
-      </div>
+const Counter: FC<CounterProps> = ({ title, quantity }) => (
+  <div className={styles.counter}>
+    <div className={styles.conteiner}>
+      <p className={styles.title}>{title}</p>
+      <span className={styles.quantity}>{quantity}</span>
     </div>
-  );
-};
+  </div>
+);
 
 export default Counter;
