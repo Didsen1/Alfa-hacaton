@@ -1,0 +1,36 @@
+@mixin text-style {
+  font-style: normal;
+  line-height: normal;
+  height: 100%;
+}
+
+.counter {
+  width: 100%;
+  min-height: 95px;
+  border-radius: 16px;
+  background-color: #f5edff;
+
+  .conteiner {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 24px auto 24px 24px;
+    text-align: start;
+    gap: 8px;
+
+    .title {
+      @include text-style;
+
+      margin: 0;
+      font-size: 14px;
+      color: #9c9c9c;
+    }
+
+    .quantity {
+      @include text-style;
+
+      font-size: 20px;
+      color: #000;
+    }
+  }
+}
