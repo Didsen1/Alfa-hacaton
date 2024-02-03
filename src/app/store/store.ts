@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { tasksReducer } from 'entities/tasks';
-import { quotesReducer } from 'entities/quotes';
+import { employeeReducer } from 'entities/employees';
+import { userReducer } from 'entities/user';
 
 export const store = configureStore({
   reducer: {
     tasks: tasksReducer,
-    quotes: quotesReducer,
+    employees: employeeReducer,
+    user: userReducer,
   },
 });
 

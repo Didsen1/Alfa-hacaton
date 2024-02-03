@@ -1,0 +1,19 @@
+.LoginPage {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  width: 100%;
+  padding: 80px;
+  align-items: center;
+  justify-content: center;
+
+  .link {
+    text-decoration: none;
+    border-radius: 8px;
+    color: black;
+    background-color: #e5e5e9;
+    line-height: 48px;
+    height: 48px;
+    width: 300px;
+  }
+}

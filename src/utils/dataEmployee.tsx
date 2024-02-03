@@ -1,4 +1,4 @@
-import { type Plan } from "../entities/plan/model/Plan"
+import { type Plan } from "entities/plans/model/Plan";
 
 export const employeeList: Plan[] = [
   {

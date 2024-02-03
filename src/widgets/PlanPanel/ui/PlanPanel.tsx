@@ -1,7 +1,7 @@
 import { Circle } from "@alfalab/core-components-icon-view/circle";
 import { Typography } from "@alfalab/core-components-typography";
 import { ButtonDesktop } from '@alfalab/core-components-button/desktop';
-import { type Plan } from "entities/plan/model/Plan";
+import { type Plan } from "entities/plans/model/Plan"; 
 import type { FC } from "react";
 import style from "./PlanPanel.module.scss"
 

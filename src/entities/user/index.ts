@@ -1,3 +1,4 @@
-import CreatePlan from './ui/CreatePlan/CreatePlan';
+import userReducer, { checkAuth, login, logout } from './model/userSlice';
+import { type User } from './model/types/User';
 
-export { CreatePlan };
+export { userReducer, checkAuth, login, logout, User };
