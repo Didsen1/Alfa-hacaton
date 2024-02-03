@@ -6,12 +6,16 @@
   box-sizing: border-box;
   width: 1280px;
   padding: 20px;
-  
+
   main {
     display: flex;
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
     flex-grow: 10;
     margin: 56px 0 0;
     height: 100%;
+    .idp {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

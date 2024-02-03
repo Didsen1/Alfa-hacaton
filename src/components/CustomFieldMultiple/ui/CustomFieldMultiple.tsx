@@ -1,4 +1,3 @@
-import React from 'react';
 import { FilterTag, type FC } from '@alfalab/core-components-filter-tag';
 
 const CustomFieldMultiple: FC = ({

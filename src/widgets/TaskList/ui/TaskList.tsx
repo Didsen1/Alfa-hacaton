@@ -1,8 +1,8 @@
 import { useState, type FC, useRef, useCallback, useEffect } from 'react';
 import AccordionButton from 'widgets/TaskList/AccordionButton/ui/AccordionButton';
 import { type Task } from 'entities/task/model/Task';
-import FilterCalendar from 'widgets/FilterCalendar/ui/FilterCalendar';
-import FilterStatus from 'widgets/FilterStatus/ui/FilterStatus';
+import FilterCalendar from 'widgets/TaskList/FilterCalendar/ui/FilterCalendar';
+import FilterStatus from 'widgets/TaskList/FilterStatus/ui/FilterStatus';
 import { data } from '../../../utils/dataTasks';
 import CurrentTasks from '../CurrentTasks/ui/CurrentTasks';
 import AllTasks from '../AllTasks/ui/AllTasks';

@@ -1,6 +1,6 @@
 import { type FC, useMemo, useState } from 'react';
 import { SelectDesktop } from '@alfalab/core-components-select/desktop';
-import CustomFieldMultiple from 'widgets/CustomFieldMultiple/ui/CustomFieldMultiple';
+import CustomFieldMultiple from 'components/CustomFieldMultiple/ui/CustomFieldMultiple';
 
 const FilterStatus: FC = ({ setFilteredStatus }) => {
   const [selectedMultiple, setSelectedMultiple] = useState([]);
