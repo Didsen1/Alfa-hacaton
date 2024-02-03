@@ -10,7 +10,7 @@ interface NavbarProps {}
 const Navbar: FC<NavbarProps> = () => (
   <nav className={style.Navbar}>
     <BackButton />
-    <NavbarLink to="/counter" text="ИПР" Icon={CrosshairIcon} />
+    <NavbarLink to="/analytics" text="ИПР" Icon={CrosshairIcon} />
     <NavbarLink to="/quotes" text="Аналитика" Icon={ChartIcon} />
   </nav>
 );

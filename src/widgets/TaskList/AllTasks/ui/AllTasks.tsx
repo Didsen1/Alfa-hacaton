@@ -34,9 +34,7 @@ const AllTasks: FC<AllTasksProps> = ({ itemRef, data }) => (
           ))}
         </>
       ) : (
-        <>
-          <NoTasks />
-        </>
+        <NoTasks />
       )}
     </Table.TBody>
   </Table>

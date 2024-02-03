@@ -20,6 +20,7 @@
 
     .title {
       @include text-style;
+
       margin: 0;
       font-size: 14px;
       color: #9c9c9c;
@@ -27,6 +28,7 @@
 
     .quantity {
       @include text-style;
+
       font-size: 20px;
       color: #000;
     }

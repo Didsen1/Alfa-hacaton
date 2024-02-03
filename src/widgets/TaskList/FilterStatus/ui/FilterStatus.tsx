@@ -1,9 +1,21 @@
 import { type FC, useMemo, useState } from 'react';
+import { type BaseSelectChangePayload } from '@alfalab/core-components-select/typings';
 import { SelectDesktop } from '@alfalab/core-components-select/desktop';
 import CustomFieldMultiple from 'components/CustomFieldMultiple/ui/CustomFieldMultiple';
 
-const FilterStatus: FC = ({ setFilteredStatus }) => {
-  const [selectedMultiple, setSelectedMultiple] = useState([]);
+interface FilterStatusProps {
+  setFilteredStatus: React.Dispatch<
+    React.SetStateAction<
+      {
+        key: string;
+        content: string;
+      }[]
+    >
+  >;
+}
+
+const FilterStatus: FC<FilterStatusProps> = ({ setFilteredStatus }) => {
+  const [selectedMultiple, setSelectedMultiple] = useState<string[]>([]);
 
   const options = useMemo(
     () => [
@@ -16,8 +28,9 @@ const FilterStatus: FC = ({ setFilteredStatus }) => {
     []
   );
 
-  const handleChangeMultiple = ({ selectedMultiple }) => {
+  const handleChangeMultiple = ({ selectedMultiple }: BaseSelectChangePayload) => {
     setSelectedMultiple(selectedMultiple.map((option) => option.key));
+    // @ts-ignore
     setFilteredStatus(selectedMultiple);
   };
 

@@ -1,6 +1,8 @@
-import { FilterTag, type FC } from '@alfalab/core-components-filter-tag';
+import { FilterTag } from '@alfalab/core-components-filter-tag';
+import { type FieldProps } from '@alfalab/core-components-select/typings';
+import { type FC } from 'react';
 
-const CustomFieldMultiple: FC = ({
+const CustomFieldMultiple: FC<FieldProps> = ({
   label,
   selected,
   setSelectedItems,
@@ -12,7 +14,7 @@ const CustomFieldMultiple: FC = ({
   const checkedContent = (
     <span>
       {!label}
-      <b> {selectedMultiple.length !== 1 ? `Выбрано: ${selectedMultiple.length}` : content}</b>
+      <b> {selectedMultiple?.length !== 1 ? `Выбрано: ${selectedMultiple?.length}` : content}</b>
     </span>
   );
 

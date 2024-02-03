@@ -38,6 +38,7 @@
     "react/jsx-props-no-spreading": "warn",
     "react/function-component-definition": "off",
     "no-shadow": "off",
+    "no-nested-ternary": "off",
     "import/no-extraneous-dependencies": "off",
     "max-len": [
       "error",

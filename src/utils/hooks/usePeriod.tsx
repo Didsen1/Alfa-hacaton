@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
-import differenceInDays from 'date-fns/differenceInDays';
 
 import { useDidUpdateEffect } from '@alfalab/hooks';
+import { differenceInDays } from 'date-fns';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 type usePeriodProps = {

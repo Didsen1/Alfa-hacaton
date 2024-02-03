@@ -1,25 +1,27 @@
-import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import { useState, useCallback, useRef, useMemo, type FC } from 'react';
 import { FilterTag } from '@alfalab/core-components-filter-tag';
 import { Popover } from '@alfalab/core-components-popover';
 import { Calendar } from '@alfalab/core-components-calendar';
 import usePeriod from 'utils/hooks/usePeriod';
 
-const FilterCalendar = ({ setFilteredPeriod }) => {
+interface FilterCalendarProps {
+  setFilteredPeriod: any;
+}
+
+const FilterCalendar: FC<FilterCalendarProps> = ({ setFilteredPeriod }) => {
   const { selectedFrom, selectedTo, updatePeriod } = usePeriod();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState();
-  const [filterTag, setFilterTag] = useState(null);
+  const [filterTag, setFilterTag] = useState<any>(null);
   const calendarRef = useRef(null);
-
-  console.log({ selectedTo, selectedFrom });
 
   const handleOpen = () => setOpen(!open);
   const handleClear = () => {
     setOpen(false);
-    updatePeriod(null, null);
+    updatePeriod();
   };
 
-  const handleUpdatePeriod = (date) => {
+  const handleUpdatePeriod = (date: any) => {
     updatePeriod(date);
 
     if (selectedFrom) {
@@ -27,35 +29,33 @@ const FilterCalendar = ({ setFilteredPeriod }) => {
     }
   };
 
-  const handleFilterTagRef = (node) => {
+  const handleFilterTagRef = (node: any) => {
     setFilterTag(node);
   };
 
-  const handleBlur = (ref, handleClick) => {
-    useEffect(() => {
-      const listener = (event) => {
-        if (ref.current && !ref.current.contains(event.target)) {
-          handleClick(event);
-        }
-      };
+  const handleBlur = (ref: any, handleClick: any) => {
+    const listener = (event: any) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        handleClick(event);
+      }
+    };
 
-      document.addEventListener('mousedown', listener);
-      document.addEventListener('touchstart', listener);
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener);
 
-      return () => {
-        document.removeEventListener('mousedown', listener);
-        document.removeEventListener('touchstart', listener);
-      };
-    }, [ref, handleClick]);
+    return () => {
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
+    };
   };
 
-  handleBlur(calendarRef, (event) => {
+  handleBlur(calendarRef, (event: any) => {
     if (filterTag && !filterTag.contains(event.target)) {
       handleOpen();
     }
   });
 
-  const getDateString = useCallback((date) => {
+  const getDateString = useCallback((date: any) => {
     const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
     const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
     const year = date.getFullYear();
@@ -71,7 +71,7 @@ const FilterCalendar = ({ setFilteredPeriod }) => {
       return `${getDateString(selectedFromDate)} - ${getDateString(selectedToDate)}`;
     }
     return setFilteredPeriod({});
-  }, [selectedFrom, selectedTo]);
+  }, [getDateString, selectedFrom, selectedTo, setFilteredPeriod]);
 
   const checkedContent = (
     <span>
@@ -91,6 +91,7 @@ const FilterCalendar = ({ setFilteredPeriod }) => {
         <style>{css}</style>
         <div style={{ width: 344, padding: '0 16px' }}>
           <Calendar
+            open={false}
             ref={calendarRef}
             responsive
             value={value}

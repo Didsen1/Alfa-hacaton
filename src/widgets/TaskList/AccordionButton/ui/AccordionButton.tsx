@@ -10,6 +10,7 @@ interface AccordionButtonProps {
 }
 
 const AccordionButton: FC<AccordionButtonProps> = ({ text, expanded, toggleExpanded }) => (
+  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
   <div className={styles.head} onClick={toggleExpanded}>
     <ChevronRightMIcon className={`${styles.icon} ${expanded ? styles.icon_active : ''}`} />
     <Typography.Text view="primary-small" tag="span" className={styles.text}>

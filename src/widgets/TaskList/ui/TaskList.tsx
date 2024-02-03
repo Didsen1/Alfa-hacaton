@@ -63,7 +63,10 @@ const TaskList: FC = () => {
   const allTasksRef = useRef<HTMLTableElement>(null);
   const currentTasksRef = useRef<HTMLTableElement>(null);
   const [filteredStatus, setFilteredStatus] = useState<{ key: string; content: string }[]>([]);
-  const [filteredPeriod, setFilteredPeriod] = useState<{ selectedFrom: number; selectedTo: number }[]>([]);
+  const [filteredPeriod, setFilteredPeriod] = useState<{ selectedFromDate: Object; selectedToDate: Object }>({
+    selectedFromDate: {},
+    selectedToDate: {},
+  });
   const [allCollapseStyle, setAllCollapseStyle] = useState({ height: '0px' });
   const [currentCollapseStyle, setCurrentCollapseStyle] = useState({ height: '0px' });
 
@@ -95,7 +98,7 @@ const TaskList: FC = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [expandedSections.all, expandedSections.current, filteredStatus, filteredPeriod]);
+  }, [expandedSections.all, filteredStatus, filteredPeriod, expandedSections]);
 
   return (
     <div className={styles.tasks}>
