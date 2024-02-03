@@ -1,6 +1,7 @@
 .Header {
   display: flex;
   align-items: center;
+  position: relative;
   height: var(--header-height);
   justify-content: space-between;
 
@@ -24,7 +25,6 @@
     text-decoration: none;
     font-size: 16px;
     font-weight: 400;
-    line-height: normal;
     letter-spacing: 0.48px;
     cursor: not-allowed;
   }
@@ -32,5 +32,18 @@
   .searchWrapper {
     display: flex;
     gap: 16px;
+  }
+
+  .hint {
+    position: absolute;
+    padding: 12px;
+    color: black;
+    background-color: #e5e5e9;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 8px;
+    letter-spacing: 0.48px;
+    bottom: -48px;
+    right: -20px;
   }
 }
