@@ -39,7 +39,7 @@ const getUser = (userType: User['type']): User => {
 
 const employeeToken = 'abcdefghijklmnopqrstuvwxyz1234567890';
 const superiorToken = '1234567890abcdefghijklmnopqrstuvwxyz';
-const TOKEN_KEY = 'token_82nf9';
+export const TOKEN_KEY = 'token_82nf9';
 
 const getToken = (userType: User['type']) =>
   userType === 'employee' ? employeeToken : userType === 'superior' ? superiorToken : '';

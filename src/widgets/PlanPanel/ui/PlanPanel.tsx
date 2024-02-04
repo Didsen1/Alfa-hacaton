@@ -1,7 +1,7 @@
 import { Circle } from "@alfalab/core-components-icon-view/circle";
 import { Typography } from "@alfalab/core-components-typography";
 import { ButtonDesktop } from '@alfalab/core-components-button/desktop';
-import { type Plan } from "entities/plans/model/Plan"; 
+import { type Plan } from "entities/plans/model/types/Plan"; 
 import type { FC } from "react";
 import style from "./PlanPanel.module.scss"
 
@@ -12,7 +12,7 @@ interface PlanProps extends Plan { }
 const PlanPanel: FC<PlanProps> = ({ expired_at, employee, }) => (
   <div className={style.panelWrapper}>
     <div className={style.employeeWrapper}>
-      <Circle imageUrl={employee.img} />
+      <Circle imageUrl={employee.photo} />
       <div className={style.employeeData}>
         <Typography.Text tag="p" className={style.employeeName}>{employee.full_name}</Typography.Text>
         <Typography.Text tag="p" className={style.employeePosition}>{employee.position}</Typography.Text>

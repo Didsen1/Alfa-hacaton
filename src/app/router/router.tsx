@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/plan',
-        element: <ProtectedRoute Component={<OpenTask planId="1" taskId="2" />} />,
+        element: <ProtectedRoute Component={<OpenTask taskId={43} />} />,
       },
       {
         path: '/plan/:task_id',

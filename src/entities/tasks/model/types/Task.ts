@@ -1,13 +1,13 @@
-import { type comment } from './comment';
+import { type Comment } from './Comment';
 
 export interface Task {
-  task_id: string;
   name: string;
   description: string;
+  status: Status;
   created_at: string;
   expires_at: string;
-  status: status;
-  comments: comment[];
+  id: string;
+  comments: Comment[];
 }
 
-export type status = 'Создано' | 'В работе' | 'На проверке' | 'Выполнено' | 'Не выполнено';
+export type Status = 'Создано' | 'В работе' | 'На проверке' | 'Выполнено' | 'Не выполнено';

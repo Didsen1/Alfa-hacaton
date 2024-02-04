@@ -24,7 +24,7 @@ const EmployeeList: FC = () => {
         </Table.THead>
         <Table.TBody>
           {!!employees.length && employees.map((employee) => (
-            <Employee key={employee.user_id} plan_id={4} expired_at='fgbf' status='В работе' employee={employee} />
+            <Employee  key={employee.id} id={4} expired_at='fgbf' status='В работе' employee={employee} />
           ))}
         </Table.TBody>
       </Table>

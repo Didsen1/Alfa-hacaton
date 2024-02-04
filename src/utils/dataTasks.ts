@@ -1,8 +1,8 @@
-import { type Task } from 'entities/task/model/Task';
+import { type Task } from 'entities/tasks';
 
 export const data: Task[] = [
   {
-    task_id: '28',
+    id: '28',
     created_at: '30.06.2022',
     name: 'Повышение квалификации',
     description: 'Пройти курс, получить зачёт по всем разделам',
@@ -11,7 +11,7 @@ export const data: Task[] = [
     comments: [],
   },
   {
-    task_id: '12',
+    id: '12',
     created_at: '30.06.2022',
     name: 'Прокачать софт-скилл коммуникации',
     description: 'Наладить коммуникацию с отделом дизайна',
@@ -20,7 +20,7 @@ export const data: Task[] = [
     comments: [],
   },
   {
-    task_id: '5',
+    id: '5',
     created_at: '30.06.2022',
     name: 'Прокачать хард-скиллы',
     description: 'Выполнить задачу с использованием нового инструмента подготовить разнообразный',
@@ -29,7 +29,7 @@ export const data: Task[] = [
     comments: [],
   },
   {
-    task_id: '4',
+    id: '4',
     created_at: '05.02.2024',
     name: 'Участие в хакатоне',
     description: 'Принять участие в новогоднем хакатоне вместе с аналитиками и дизайнерами разнообразный',

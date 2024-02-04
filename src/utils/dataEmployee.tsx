@@ -1,59 +1,79 @@
-import { type Plan } from "entities/plans/model/Plan";
+import { type Plan } from 'entities/plans/model/types/Plan';
 
 export const employeeList: Plan[] = [
   {
-    "plan_id": 345,
-    "employee": {
-      "user_id": 5667,
-      "full_name": "Петров Петр Петрович",
-      "position": "Разработчик",
-      "img": `https://media.tenor.com/4t8eATWrfS4AAAAM/huh-dog-what-dog.gif`
+    id: 345,
+    employee: {
+      id: 5667,
+      full_name: 'Петров Петр Петрович',
+      position: 'Разработчик',
+      photo: `https://media.tenor.com/4t8eATWrfS4AAAAM/huh-dog-what-dog.gif`,
+      short_name: 'sdv',
     },
-    "expired_at": "24.12.2024",
-    "status": "На проверке",
+    expired_at: '24.12.2024',
+    status: 'На проверке',
+    aim_description: 'sdfsdf',
+    created_at: '05.02.2023',
+    tasks: [],
   },
   {
-    "plan_id": 345,
-    "employee": {
-      "user_id": 5667,
-      "full_name": "Макаров Макар Макарович",
-      "position": "Разработчик",
-      "img": `https://i.pinimg.com/564x/e5/96/6b/e5966bd4d5a841d7be18efb4dd905266.jpg`
+    id: 345,
+    employee: {
+      id: 5667,
+      full_name: 'Макаров Макар Макарович',
+      position: 'Разработчик',
+      photo: `https://i.pinimg.com/564x/e5/96/6b/e5966bd4d5a841d7be18efb4dd905266.jpg`,
+      short_name: 'sdv',
     },
-    "expired_at": "24.12.2024",
-    "status": "Не выполнено",
+    expired_at: '24.12.2024',
+    status: 'Не выполнено',
+    aim_description: 'sdfsdf',
+    created_at: '05.02.2023',
+    tasks: [],
   },
   {
-    "plan_id": 345,
-    "employee": {
-      "user_id": 5667,
-      "full_name": "Иванов Иван Иванович",
-      "position": "Разработчик",
-      "img": `https://i.pinimg.com/474x/ba/56/d6/ba56d676c3ca53a2c58decee02d7c916.jpg`
+    id: 345,
+    employee: {
+      id: 5667,
+      full_name: 'Иванов Иван Иванович',
+      position: 'Разработчик',
+      photo: `https://i.pinimg.com/474x/ba/56/d6/ba56d676c3ca53a2c58decee02d7c916.jpg`,
+      short_name: 'sdv',
     },
-    "expired_at": "24.12.2024",
-    "status": "Создано",
+    expired_at: '24.12.2024',
+    status: 'Создано',
+    aim_description: 'sdfsdf',
+    created_at: '05.02.2023',
+    tasks: [],
   },
   {
-    "plan_id": 345,
-    "employee": {
-      "user_id": 5667,
-      "full_name": "Васильев Василий Васильевич",
-      "position": "Разработчик",
-      "img": `https://i1.sndcdn.com/artworks-JiBs7BfZrWepPcwG-VhEqWA-t500x500.jpg`
+    id: 345,
+    employee: {
+      id: 5667,
+      full_name: 'Васильев Василий Васильевич',
+      position: 'Разработчик',
+      photo: `https://i1.sndcdn.com/artworks-JiBs7BfZrWepPcwG-VhEqWA-t500x500.jpg`,
+      short_name: 'sdv',
     },
-    "expired_at": "24.12.2024",
-    "status": "В работе",
+    expired_at: '24.12.2024',
+    status: 'В работе',
+    aim_description: 'sdfsdf',
+    created_at: '05.02.2023',
+    tasks: [],
   },
   {
-    "plan_id": 345,
-    "employee": {
-      "user_id": 5667,
-      "full_name": "Догов Владимир Ильич ",
-      "position": "Разработчик",
-      "img": `https://i1.sndcdn.com/avatars-vXOxtduccQy8boNi-4dB3aQ-t240x240.jpg`
+    id: 345,
+    employee: {
+      id: 5667,
+      full_name: 'Догов Владимир Ильич ',
+      position: 'Разработчик',
+      photo: `https://i1.sndcdn.com/avatars-vXOxtduccQy8boNi-4dB3aQ-t240x240.jpg`,
+      short_name: 'sdv',
     },
-    "expired_at": "24.12.2024",
-    "status": "Выполнено",
+    expired_at: '24.12.2024',
+    status: 'Выполнено',
+    aim_description: 'sdfsdf',
+    created_at: '05.02.2023',
+    tasks: [],
   },
-]
+];

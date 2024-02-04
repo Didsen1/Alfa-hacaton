@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import { Table } from '@alfalab/core-components-table';
 import { Typography } from '@alfalab/core-components-typography';
 import { Status } from '@alfalab/core-components-status';
-import { type Task as TTask } from 'entities/task/model/Task';
+import { type Task as TTask } from 'entities/tasks';
 import styles from './Task.module.scss';
 
 interface TaskProps extends TTask {}
@@ -15,7 +15,7 @@ enum color {
   'На проверке' = 'purple',
 }
 
-const Task: FC<TaskProps> = ({ comments, created_at, description, expires_at, name, status, task_id }) => (
+const Task: FC<TaskProps> = ({ description, expires_at, name, status }) => (
   <Table.TRow className={styles.taskContainer}>
     <Table.TCell width="300px">
       <Typography.Text view="primary-small" tag="div" className={styles.title}>
