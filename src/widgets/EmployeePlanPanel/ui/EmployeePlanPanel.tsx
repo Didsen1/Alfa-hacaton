@@ -1,6 +1,6 @@
-import { Typography } from "@alfalab/core-components-typography";
-import { type PlanPanel } from "entities/plans/model/PlanPanel";
 import type { FC } from "react";
+import { Typography } from "@alfalab/core-components-typography";
+import { type PlanPanel } from "entities/plans";
 import style from "./EmployeePlanPanel.module.scss"
 
 interface PlanPanelProps extends PlanPanel { }

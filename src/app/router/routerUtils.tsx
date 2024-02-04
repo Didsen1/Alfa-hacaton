@@ -50,7 +50,5 @@ export const useRouteComponent = (Component?: ReactElement<any, any>) => {
     }
   }, [Component, pathname, type]);
 
-  console.log(type)
-
   return ReturnComponent;
 };

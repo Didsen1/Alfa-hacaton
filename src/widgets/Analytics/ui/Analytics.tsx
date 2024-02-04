@@ -1,10 +1,10 @@
 import { type FC } from 'react';
+import Navbar, { NavbarLink } from 'widgets/Navbar';
 import ChartIcon from 'shared/icons/chart-with-up-arrow.svg?react';
 import CrosshairIcon from 'shared/icons/crosshair-icon.svg?react';
-import Navbar, { NavbarLink } from 'widgets/Navbar';
+import { type column } from '../model/types/chart';
 import style from './Analytics.module.scss';
 import Chart from './Chart/Chart';
-import { type column } from '../model/types/chart';
 
 interface AnalyticsProps {}
 

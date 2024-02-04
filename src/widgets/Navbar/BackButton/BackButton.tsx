@@ -1,6 +1,6 @@
 import { type FC } from 'react';
-import { ArrowLeftMIcon } from '@alfalab/icons-android/ArrowLeftMIcon';
 import { useNavigate } from 'react-router-dom';
+import { ArrowLeftMIcon } from '@alfalab/icons-android/ArrowLeftMIcon';
 import style from './BackButton.module.scss';
 
 const BackButton: FC = () => {

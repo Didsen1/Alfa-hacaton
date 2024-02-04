@@ -1,17 +1,16 @@
 import type { FC } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ButtonDesktop } from '@alfalab/core-components-button/desktop';
+import { Typography } from '@alfalab/core-components-typography';
 import Navbar, { NavbarLink } from 'widgets/Navbar';
-import { EmployeeList } from 'entities/employees';
+import { Counter, TaskCounter } from 'widgets/TaskCounter';
 import Search from 'widgets/Search';
+import { EmployeeList } from 'entities/employees';
 import ChartIcon from 'shared/icons/chart-with-up-arrow.svg?react';
 import CrosshairIcon from 'shared/icons/crosshair-icon.svg?react';
-import { Typography } from '@alfalab/core-components-typography';
-import TaskCounter from 'widgets/TaskCounter/ui/TaskCounter';
-import Counter from 'widgets/TaskCounter/ui/Counter/ui/Counter';
 import style from './AdminPage.module.scss';
 
-const AdminPage = () => {
+const AdminPage: FC = () => {
   const { pathname } = useLocation();
 
   return (

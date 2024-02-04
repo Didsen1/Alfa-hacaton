@@ -1,6 +1,6 @@
 import { type ReactNode, type FC, type Dispatch, type SetStateAction, useCallback } from 'react';
-import { Modal } from '@alfalab/core-components-modal';
 import { createPortal } from 'react-dom';
+import { Modal } from '@alfalab/core-components-modal';
 import style from './AppModal.module.scss';
 
 interface ModalProps {

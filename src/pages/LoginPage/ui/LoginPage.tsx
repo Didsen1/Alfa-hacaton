@@ -1,7 +1,7 @@
 import { type FC } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppDispatch } from 'app/store/hooks';
 import { login, type User } from 'entities/user';
-import { Link } from 'react-router-dom';
 import style from './LoginPage.module.scss';
 
 interface LoginPageProps {}

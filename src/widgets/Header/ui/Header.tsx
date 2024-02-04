@@ -1,14 +1,14 @@
 import { useState, type FC } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Circle } from '@alfalab/core-components-icon-view/circle';
 import { Typography } from '@alfalab/core-components-typography';
-import { Link, useNavigate } from 'react-router-dom';
 import { IconButton } from '@alfalab/core-components-icon-button';
 import BellMIcon from '@alfalab/icons-glyph/BellMIcon';
+import { useAppDispatch } from 'app/store/hooks';
+import Search from 'widgets/Search';
+import { logout } from 'entities/user';
 import alfaLogo from 'shared/icons/alfa-logo.svg';
 import Avatar from 'shared/icons/avatar.svg?react';
-import Search from 'widgets/Search';
-import { useAppDispatch } from 'app/store/hooks';
-import { logout } from 'entities/user';
 import style from './Header.module.scss';
 
 const Header: FC = () => {
