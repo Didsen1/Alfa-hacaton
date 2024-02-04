@@ -1,9 +1,8 @@
-import App from 'app/ui/App';
-import { ErrorPage } from 'pages/ErrorPage';
-import LoginPage from 'pages/LoginPage/ui/LoginPage';
 import { createBrowserRouter } from 'react-router-dom';
-import CreateTask from 'entities/tasks/ui/CreateTask/CreateTask';
-import { OpenTask } from 'entities/tasks';
+import { ErrorPage } from 'pages/ErrorPage';
+import App from 'app/ui/App';
+import { OpenTask, CreateTaskComponent } from 'entities/tasks';
+import LoginPage from 'pages/LoginPage/ui/LoginPage';
 import Analytics from 'widgets/Analytics';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -31,7 +30,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/admin',
-        element: <ProtectedRoute Component={<CreateTask />} />,
+        element: <ProtectedRoute Component={<Analytics />} />,
       },
     ],
   },
