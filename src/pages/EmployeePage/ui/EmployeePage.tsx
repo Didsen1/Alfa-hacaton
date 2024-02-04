@@ -16,7 +16,7 @@ const EmployeePage = () => {
     <main className={style.employeePage}>
       <div className={style.widgets}>
         <Navbar />
-        <EmployeePlanPanel expired_at={'12.12.2022'} aim={'узнать чт такое ИПР'} supervisor={supervisor} />
+        <EmployeePlanPanel expired_at="12.12.2022" aim="узнать чт такое ИПР" supervisor={supervisor} />
       </div>
       <section>
         <Typography.Title tag="h2" className={style.h2}>
