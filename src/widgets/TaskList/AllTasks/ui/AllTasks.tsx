@@ -6,7 +6,7 @@ import Task from '../../Task/ui/Task';
 import styles from './AllTasks.module.scss';
 
 interface AllTasksProps {
-  itemRef: RefObject<HTMLTableElement>;
+  itemRef?: RefObject<HTMLTableElement>;
   data: TTask[];
 }
 
