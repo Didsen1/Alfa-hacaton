@@ -24,10 +24,7 @@ const App = () => {
   return (
     <div className={style.App}>
       <Header />
-      <main>
-        <Outlet />
-      </main>
-
+      <Outlet />
       <Footer />
     </div>
   );
