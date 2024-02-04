@@ -6,14 +6,6 @@ interface TaskCounterProps {
   children: React.ReactNode;
 }
 
-const TaskCounter: FC<TaskCounterProps> = ({ children }) => (
-  <div className={styles.taskCounter}>
-    {children}
-    {/* <Counter title="Всего задач" quantity="4" />
-    <Counter title="Новые задачи" quantity="1" />
-    <Counter title="Новые комментарии" quantity="1" />
-    <Counter title="Просроченные задачи" quantity="0" /> */}
-  </div>
-);
+const TaskCounter: FC<TaskCounterProps> = ({ children }) => <div className={styles.taskCounter}>{children}</div>;
 
 export default TaskCounter;
