@@ -1,0 +1,31 @@
+$color-text: #8f8f8f;
+$cursor: pointer;
+
+.head {
+  padding-left: 20px;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  width: 925px;
+  align-items: center;
+  gap: 8px;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    color: $color-text;
+    transition: transform 0.3s;
+    cursor: $cursor;
+  }
+
+  .icon_active {
+    transform: rotate(90deg);
+  }
+
+  .text {
+    margin: 0;
+    font-size: 16px;
+    color: $color-text;
+    cursor: $cursor;
+  }
+}
