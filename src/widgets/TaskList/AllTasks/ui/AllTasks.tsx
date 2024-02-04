@@ -1,12 +1,12 @@
 import type { RefObject, FC } from 'react';
 import { Table } from '@alfalab/core-components-table';
-import Task from 'widgets/TaskList/Task/ui/Task';
-import NoTasks from 'widgets/TaskList/NoTasks/ui/NoTasks';
 import { type Task as TTask } from 'entities/tasks';
+import NoTasks from '../../NoTasks/ui/NoTasks';
+import Task from '../../Task/ui/Task';
 import styles from './AllTasks.module.scss';
 
 interface AllTasksProps {
-  itemRef: RefObject<HTMLTableElement>;
+  itemRef?: RefObject<HTMLTableElement>;
   data: TTask[];
 }
 

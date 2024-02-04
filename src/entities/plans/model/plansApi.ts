@@ -55,6 +55,22 @@ export const getAllPlans = createAsyncThunk<Plan[]>('plans/getAllPlans', async (
   }
 });
 
+export const getCurrentPlan = createAsyncThunk<Plan>('plans/getCurrentPlan', async (_, thunkApi) => {
+  try {
+    const response = await axios.get<Plan>(`${BASE_URL}/plans`, {
+      headers: {
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem(TOKEN_KEY)}`,
+      },
+    });
+    return response.data;
+  } catch (err: any) {
+    console.error(`Ошибка при запросе getCurrentPlan: ${err.code}:${err.message}`);
+    return thunkApi.rejectWithValue({ message: err.message, code: err.code });
+  }
+});
+
 export const createPlan = createAsyncThunk<Plan, Partial<Plan>>('plans/createPlan', async (plan, thunkApi) => {
   try {
     const response = await axios.post<Plan>(`${BASE_URL}/plans`, plan, {

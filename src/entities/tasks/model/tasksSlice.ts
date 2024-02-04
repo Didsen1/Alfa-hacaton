@@ -30,7 +30,11 @@ export const tasksSlice = createSlice({
     builder.addCase(getTaskById.fulfilled, (state, action: PayloadAction<Task>) => {
       state.isLoading = false;
       state.isError = false;
-      state.currentTask = action.payload;
+      state.currentTask = {
+        ...action.payload,
+        expires_at: new Date(action.payload.expires_at).toLocaleDateString(),
+        created_at: new Date(action.payload.created_at).toLocaleDateString(),
+      };
     });
     builder.addCase(getTaskById.rejected, (state, action: PayloadAction<any>) => {
       state.isLoading = false;

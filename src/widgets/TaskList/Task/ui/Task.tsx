@@ -1,33 +1,38 @@
 import { type FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Table } from '@alfalab/core-components-table';
 import { Typography } from '@alfalab/core-components-typography';
 import { Status } from '@alfalab/core-components-status';
 import Sidebar from 'widgets/Sidebar/index';
-import { type Task as TTask } from 'entities/tasks';
+import { AppStatus, type Task as TTask } from 'entities/tasks';
 import styles from './Task.module.scss';
 
 interface TaskProps extends TTask {}
 
 enum color {
-  'Не выполнено' = 'red',
-  'Выполнено' = 'green',
-  'В работе' = 'orange',
-  'Создано' = 'grey',
-  'На проверке' = 'purple',
+  'failed' = 'red',
+  'done' = 'green',
+  'in_progress' = 'orange',
+  'created' = 'grey',
+  'under_review' = 'purple',
 }
 
-const Task: FC<TaskProps> = ({ description, expires_at, name, status }) => 
-// const [isModalVisible, setIsModalVisible] = useState(false);
+const Task: FC<TaskProps> = ({ description, expires_at, name, status, id }) => {
+  // const [isModalVisible, setIsModalVisible] = useState(false);
+  // const showModal = () => {
+  //   setIsModalVisible(true);
+  // };
+  // const closeModal = () => {
+  //   setIsModalVisible(false);
+  // };
 
-// const showModal = () => {
-//   setIsModalVisible(true);
-// };
+  const navigate = useNavigate();
 
-// const closeModal = () => {
-//   setIsModalVisible(false);
-// };
+  const handleClick = () => {
+    navigate(`${id}`);
+  };
 
-  (
+  return (
     <>
       <Table.TRow className={styles.taskContainer}>
         <Table.TCell width="300px">
@@ -55,6 +60,7 @@ const Task: FC<TaskProps> = ({ description, expires_at, name, status }) =>
       </Table.TRow>
       {/* <Sidebar></Sidebar> */}
     </>
-  )
-;
+  );
+};
+
 export default Task;

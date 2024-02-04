@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import style from './Navbar.module.scss';
-import NavbarLink from '../NavbarLink/NavbarLink';
 import BackButton from '../BackButton/BackButton';
 
 interface NavbarProps {

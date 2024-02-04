@@ -24,7 +24,7 @@ export const updateTaskById = createAsyncThunk<Task, [number, Partial<Task>]>(
   'tasks/updateTaskById',
   async ([id, task], thunkApi) => {
     try {
-      const response = await axios.patch<Task>(`${BASE_URL}/tasks/${id}`, task, {
+      const response = await axios.patch<Task>(`${BASE_URL}/tasks/${id}/`, task, {
         headers: {
           'Access-Control-Allow-Headers': 'Content-Type',
           'Content-Type': 'application/json',
@@ -39,9 +39,9 @@ export const updateTaskById = createAsyncThunk<Task, [number, Partial<Task>]>(
   }
 );
 
-export const getAllTasks = createAsyncThunk<Task[]>('tasks/getAllTasks', async (_, thunkApi) => {
+export const getAllTasks = createAsyncThunk<Task[], number>('tasks/getAllTasks', async (plan_id, thunkApi) => {
   try {
-    const response = await axios.get<Task[]>(`${BASE_URL}/tasks`, {
+    const response = await axios.get<Task[]>(`${BASE_URL}/plans/${plan_id}/tasks/`, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export const getAllTasks = createAsyncThunk<Task[]>('tasks/getAllTasks', async (
 
 export const createTask = createAsyncThunk<Task, Partial<Task>>('tasks/createTask', async (task, thunkApi) => {
   try {
-    const response = await axios.post<Task>(`${BASE_URL}/tasks`, task, {
+    const response = await axios.post<Task>(`${BASE_URL}/tasks/`, task, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
