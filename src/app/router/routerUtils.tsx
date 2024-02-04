@@ -1,7 +1,7 @@
+import { Navigate, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { checkAuth } from 'entities/user';
 import { useState, type ReactElement, useLayoutEffect } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
 
 // prettier-ignore
 export const useRouteComponent = (Component?: ReactElement<any, any>) => {

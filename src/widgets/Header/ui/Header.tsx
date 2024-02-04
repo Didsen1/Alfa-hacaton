@@ -6,7 +6,7 @@ import { IconButton } from '@alfalab/core-components-icon-button';
 import BellMIcon from '@alfalab/icons-glyph/BellMIcon';
 import alfaLogo from 'shared/icons/alfa-logo.svg';
 import Avatar from 'shared/icons/avatar.svg?react';
-import Search from 'components/Search';
+import Search from 'widgets/Search';
 import { useAppDispatch } from 'app/store/hooks';
 import { logout } from 'entities/user';
 import style from './Header.module.scss';

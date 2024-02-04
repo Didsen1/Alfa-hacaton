@@ -1,7 +1,7 @@
 import { type FC, useMemo, useState } from 'react';
 import { type BaseSelectChangePayload } from '@alfalab/core-components-select/typings';
 import { SelectDesktop } from '@alfalab/core-components-select/desktop';
-import CustomFieldMultiple from 'components/CustomFieldMultiple/ui/CustomFieldMultiple';
+import CustomFieldMultiple from 'widgets/CustomFieldMultiple';
 
 interface FilterStatusProps {
   setFilteredStatus: React.Dispatch<

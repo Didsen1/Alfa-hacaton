@@ -9,7 +9,7 @@ interface NavbarLinkProps {
 }
 
 const NavbarLink: FC<NavbarLinkProps> = ({ text, to, Icon }) => (
-  <NavLink to={to} className={({ isActive }) => [isActive ? style.active : '', style.NavbarLink].join(' ')}>
+  <NavLink to={to} end className={({ isActive }) => [isActive ? style.active : '', style.NavbarLink].join(' ')}>
     {Icon && <Icon />}
     {text}
   </NavLink>
