@@ -1,7 +1,8 @@
 import { type employee } from "./Employee"
 
 export interface Plan {
-  plan_id: number;
+  plan_id?: number;
+  aim? : string;
   expired_at: string;
   status: status;
   employee: employee;

@@ -1,15 +1,15 @@
 import { Circle } from "@alfalab/core-components-icon-view/circle";
 import { Typography } from "@alfalab/core-components-typography";
 import { ButtonDesktop } from '@alfalab/core-components-button/desktop';
-import { type Plan } from "entities/plan/model/Plan";
+import { type AdminPlan } from "entities/plan/model/AdminPlanPanel";
 import type { FC } from "react";
 import style from "./PlanPanel.module.scss"
 
-interface PlanProps extends Plan { }
+interface PlanProps extends AdminPlan { }
 
 
 /* eslint-disable camelcase */
-const PlanPanel: FC<PlanProps> = ({ expired_at, employee, }) => (
+const PlanPanel: FC<PlanProps> = ({ expired_at, aim, employee, }) => (
   <div className={style.panelWrapper}>
     <div className={style.employeeWrapper}>
       <Circle imageUrl={employee.img} />
@@ -20,7 +20,7 @@ const PlanPanel: FC<PlanProps> = ({ expired_at, employee, }) => (
     </div>
     <div className={style.aimWrapper}>
       <Typography.Text tag="p" className={style.aimTitle}>Цель ИПР</Typography.Text>
-      <Typography.Text tag="p" className={style.aim}>?</Typography.Text>
+      <Typography.Text tag="p" className={style.aim}>{aim}</Typography.Text>
     </div>
     <div className={style.expired_atWrapper}>
       <Typography.Text tag="p" className={style.expired_atTitle}>Срок ИПР</Typography.Text>

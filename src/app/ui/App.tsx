@@ -13,12 +13,7 @@ const App = () => {
   return (
     <div className={style.App}>
       <Header />
-      <main>
-        <Navbar />
-        <Outlet />
-        <EmployeeList/>
-      </main>
-
+      <Outlet />
       <Footer />
     </div>
   );

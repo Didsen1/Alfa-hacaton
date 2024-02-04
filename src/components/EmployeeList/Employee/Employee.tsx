@@ -1,4 +1,5 @@
 import { type FC } from 'react';
+import { useLocation } from "react-router-dom";
 import { Table } from '@alfalab/core-components-table';
 import { Status } from '@alfalab/core-components-status';
 import { Circle } from '@alfalab/core-components-icon-view/circle';
@@ -16,21 +17,22 @@ enum color {
 }
 
 /* eslint-disable camelcase */
+const Employee: FC<EmployeeProps> = ({ expired_at, status, employee, }) => {
+  const { pathname } = useLocation();
 
-const Employee: FC<EmployeeProps> = ({ expired_at, status, employee, }) => (
-
-  <Table.TRow>
-    <Table.TCell className={style.employeeCell}>
-      <Circle imageUrl={employee.img} size={48} className={style.circle} />
-      <div>
-        <p>{employee.full_name}</p>
-        <p className={style.pWhite}>{employee.position}</p>
-      </div>
-    </Table.TCell>
-    <Table.TCell><Status color={color[status]}>{status}</Status></Table.TCell>
-    <Table.TCell>{expired_at}</Table.TCell>
-  </Table.TRow >
-
-);
+  return (
+    < Table.TRow >
+      <Table.TCell className={style.employeeCell}>
+        <Circle imageUrl={employee.img} size={48} className={style.circle} />
+        <div>
+          <p>{employee.full_name}</p>
+          <p className={style.pWhite}>{employee.position}</p>
+        </div>
+      </Table.TCell>
+      <Table.TCell><Status color={color[status]}>{status}</Status></Table.TCell>
+      <Table.TCell>{expired_at}</Table.TCell>
+    </Table.TRow >
+  );
+};
 
 export default Employee;
