@@ -17,7 +17,7 @@ const App = () => {
   const { type } = useAppSelector((state) => state.user);
 
   useLayoutEffect(() => {
-    dispatch(checkAuth());    
+    dispatch(checkAuth());
   }, [dispatch, type]);
 
   useEffect(() => {
@@ -27,7 +27,9 @@ const App = () => {
   return (
     <div className={style.App}>
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

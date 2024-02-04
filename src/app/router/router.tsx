@@ -1,11 +1,10 @@
-import App from 'app/ui/App';
-import { ErrorPage } from 'pages/ErrorPage';
-import LoginPage from 'pages/LoginPage/ui/LoginPage';
 import { createBrowserRouter } from 'react-router-dom';
-import AdminPage from 'pages/AdminPage';
-import AdminAnalyticsPage from 'pages/AdminAnalyticsPage';
-import AdminPlanPage from 'pages/AdminPlanPage';
-import PlanPage from 'pages/PlanPage';
+import { ErrorPage } from 'pages/ErrorPage';
+import App from 'app/ui/App';
+import { OpenTask, CreateTaskComponent } from 'entities/tasks';
+import LoginPage from 'pages/LoginPage/ui/LoginPage';
+import Analytics from 'widgets/Analytics';
+import ProtectedRoute from './ProtectedRoute';
 
 export const router = createBrowserRouter([
   {
@@ -15,21 +14,23 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <PlanPage />,
+        element: <ProtectedRoute />,
       },
       {
-        path: '/Admin',
-        element: <AdminPage />,
-        children: [
-          {
-            path: 'Analytics',
-            element: <AdminAnalyticsPage />,
-          },
-          {
-            path: 'AdminPlanPage',
-            element: <AdminPlanPage />,
-          },
-        ]
+        path: '/login',
+        element: <LoginPage />,
+      },
+      {
+        path: '/plan',
+        element: <ProtectedRoute Component={<OpenTask taskId={43} />} />,
+      },
+      {
+        path: '/plan/:task_id',
+        element: <ProtectedRoute Component={<Analytics />} />,
+      },
+      {
+        path: '/admin',
+        element: <ProtectedRoute Component={<Analytics />} />,
       },
     ],
   },

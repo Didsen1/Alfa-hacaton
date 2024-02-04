@@ -2,11 +2,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { BASE_URL } from 'utils/constants/api';
 import { TOKEN_KEY } from 'entities/user';
-import { type Task } from './types/Task';
+import { type Plan } from './types/Plan';
 
-export const getTaskById = createAsyncThunk<Task, number>('tasks/getTaskById', async (id, thunkApi) => {
+export const getPlanById = createAsyncThunk<Plan, number>('plans/getPlanById', async (id, thunkApi) => {
   try {
-    const response = await axios.get<Task>(`${BASE_URL}/tasks/${id}`, {
+    const response = await axios.get<Plan>(`${BASE_URL}/plans/${id}`, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
@@ -15,16 +15,16 @@ export const getTaskById = createAsyncThunk<Task, number>('tasks/getTaskById', a
     });
     return response.data;
   } catch (err: any) {
-    console.error(`Ошибка при запросе getTaskById: ${err.code}:${err.message}`);
+    console.error(`Ошибка при запросе getPlanById: ${err.code}:${err.message}`);
     return thunkApi.rejectWithValue({ message: err.message, code: err.code });
   }
 });
 
-export const updateTaskById = createAsyncThunk<Task, [number, Partial<Task>]>(
-  'tasks/updateTaskById',
-  async ([id, task], thunkApi) => {
+export const updatePlanById = createAsyncThunk<Plan, [number, Partial<Plan>]>(
+  'plans/updatePlanById',
+  async ([id, plan], thunkApi) => {
     try {
-      const response = await axios.patch<Task>(`${BASE_URL}/tasks/${id}`, task, {
+      const response = await axios.patch<Plan>(`${BASE_URL}/plans/${id}`, plan, {
         headers: {
           'Access-Control-Allow-Headers': 'Content-Type',
           'Content-Type': 'application/json',
@@ -33,15 +33,15 @@ export const updateTaskById = createAsyncThunk<Task, [number, Partial<Task>]>(
       });
       return response.data;
     } catch (err: any) {
-      console.error(`Ошибка при запросе updateTaskById: ${err.code}:${err.message}`);
+      console.error(`Ошибка при запросе updatePlanById: ${err.code}:${err.message}`);
       return thunkApi.rejectWithValue({ message: err.message, code: err.code });
     }
   }
 );
 
-export const getAllTasks = createAsyncThunk<Task[]>('tasks/getAllTasks', async (_, thunkApi) => {
+export const getAllPlans = createAsyncThunk<Plan[]>('plans/getAllPlans', async (_, thunkApi) => {
   try {
-    const response = await axios.get<Task[]>(`${BASE_URL}/tasks`, {
+    const response = await axios.get<Plan[]>(`${BASE_URL}/plans`, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
@@ -50,14 +50,14 @@ export const getAllTasks = createAsyncThunk<Task[]>('tasks/getAllTasks', async (
     });
     return response.data;
   } catch (err: any) {
-    console.error(`Ошибка при запросе getAllTasks: ${err.code}:${err.message}`);
+    console.error(`Ошибка при запросе getAllPlans: ${err.code}:${err.message}`);
     return thunkApi.rejectWithValue({ message: err.message, code: err.code });
   }
 });
 
-export const createTask = createAsyncThunk<Task, Partial<Task>>('tasks/createTask', async (task, thunkApi) => {
+export const createPlan = createAsyncThunk<Plan, Partial<Plan>>('plans/createPlan', async (plan, thunkApi) => {
   try {
-    const response = await axios.post<Task>(`${BASE_URL}/tasks`, task, {
+    const response = await axios.post<Plan>(`${BASE_URL}/plans`, plan, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ export const createTask = createAsyncThunk<Task, Partial<Task>>('tasks/createTas
     });
     return response.data;
   } catch (err: any) {
-    console.error(`Ошибка при запросе createTask: ${err.code}:${err.message}`);
+    console.error(`Ошибка при запросе createPlan: ${err.code}:${err.message}`);
     return thunkApi.rejectWithValue({ message: err.message, code: err.code });
   }
 });

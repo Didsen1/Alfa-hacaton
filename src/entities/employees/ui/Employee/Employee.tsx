@@ -2,14 +2,14 @@ import { type FC } from 'react';
 import { Table } from '@alfalab/core-components-table';
 import { Status } from '@alfalab/core-components-status';
 import { Circle } from '@alfalab/core-components-icon-view/circle';
-import { type Plan } from 'entities/plans/model/Plan';
-import { type status } from 'entities/tasks';
+import { type Plan } from 'entities/plans/model/types/Plan';
+import { type Status as TaskStatus } from 'entities/tasks';
 import { type Employee as TEmployee } from '../../model/types/employee';
 import style from './Employee.module.scss';
 
-interface EmployeeProps extends Plan {
+interface EmployeeProps extends Partial<Plan> {
   expired_at: string;
-  status: status;
+  status: TaskStatus;
   employee: TEmployee;
 }
 
@@ -26,7 +26,7 @@ enum color {
 const Employee: FC<EmployeeProps> = ({ expired_at, status, employee }) => (
   <Table.TRow>
     <Table.TCell className={style.employeeCell}>
-      <Circle imageUrl={employee.img} size={48} className={style.circle} />
+      <Circle imageUrl={employee.photo} size={48} className={style.circle} />
       <div>
         <p>{employee.full_name}</p>
         <p className={style.pWhite}>{employee.position}</p>

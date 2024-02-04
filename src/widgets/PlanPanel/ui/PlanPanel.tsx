@@ -9,10 +9,10 @@ interface PlanProps extends AdminPlan { }
 
 
 /* eslint-disable camelcase */
-const PlanPanel: FC<PlanProps> = ({ expired_at, aim, employee, }) => (
+const PlanPanel: FC<PlanProps> = ({ expired_at, aim, employee }) => (
   <div className={style.panelWrapper}>
     <div className={style.employeeWrapper}>
-      <Circle imageUrl={employee.img} />
+      <Circle imageUrl={employee.photo} />
       <div className={style.employeeData}>
         <Typography.Text tag="p" className={style.employeeName}>{employee.full_name}</Typography.Text>
         <Typography.Text tag="p" className={style.employeePosition}>{employee.position}</Typography.Text>

@@ -1,9 +1,8 @@
-import { type employee } from "entities/plan/model/Employee";
+import { type Employee } from 'entities/employees';
 
 export interface AdminPlan {
   plan_id?: number;
-  aim? : string;
+  aim?: string;
   expired_at: string;
-  employee: employee;
+  employee: Employee;
 }
-

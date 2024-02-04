@@ -7,14 +7,14 @@ import { Textarea } from '@alfalab/core-components-textarea';
 import { Button } from '@alfalab/core-components-button';
 import { IconButton } from '@alfalab/core-components-icon-button';
 import { PaperAirplaneMIcon } from '@alfalab/icons-glyph/PaperAirplaneMIcon';
-import style from './CreateTask.module.scss';
+import style from './CreateTaskComponent.module.scss';
 import CommentInput from '../CommentInput/CommentInput';
 
-const CreateTask: FC = () => {
+const CreateTaskComponent: FC = () => {
   let a;
 
   return (
-    <div className={style.CreateTask}>
+    <div className={style.CreateTaskComponent}>
       <SidePanelDesktop.Header />
 
       <SidePanelDesktop.Content className={style.content}>
@@ -46,4 +46,4 @@ const CreateTask: FC = () => {
   );
 };
 
-export default CreateTask;
+export default CreateTaskComponent;

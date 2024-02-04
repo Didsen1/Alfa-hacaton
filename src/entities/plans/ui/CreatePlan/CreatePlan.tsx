@@ -10,7 +10,7 @@ import style from './CreatePlan.module.scss';
 
 interface CreatePlanProps {}
 
-const CreatePlan: FC<CreatePlanProps> = () => {
+const CreatePlanComponent: FC<CreatePlanProps> = () => {
   const dispatch = useAppDispatch();
   return (
     <>
@@ -45,4 +45,4 @@ const CreatePlan: FC<CreatePlanProps> = () => {
   );
 };
 
-export default CreatePlan;
+export default CreatePlanComponent;
