@@ -1,3 +1,3 @@
-import PlanPage from './ui/PlanPage'
+import PlanPage from './ui/PlanPage';
 
 export default PlanPage;

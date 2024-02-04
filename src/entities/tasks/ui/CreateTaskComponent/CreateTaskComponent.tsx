@@ -8,7 +8,7 @@ import { Button } from '@alfalab/core-components-button';
 import { IconButton } from '@alfalab/core-components-icon-button';
 import { PaperAirplaneMIcon } from '@alfalab/icons-glyph/PaperAirplaneMIcon';
 import style from './CreateTaskComponent.module.scss';
-import CommentInput from '../CommentInput/CommentInput';
+import CommentInput from '../../../comments/ui/CommentInput/CommentInput';
 
 const CreateTaskComponent: FC = () => {
   let a;

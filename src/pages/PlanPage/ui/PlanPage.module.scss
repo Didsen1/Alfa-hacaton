@@ -1,9 +1,19 @@
-.EmployeePage {
-    text-align: left;
+.PlanPage {
+  display: flex;
+  text-align: left;
+  margin-bottom: 100px;
 
+  .widgets {
+    margin: 0;
+  }
 
-    .h2 {
-        margin-bottom: 40px;
+  h2 {
+    margin-bottom: 10px;
+  }
 
-    }
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
 }

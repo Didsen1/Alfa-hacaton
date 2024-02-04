@@ -1,6 +1,5 @@
 import { useState, type FC, useRef, useCallback, useEffect } from 'react';
 import { type Task } from 'entities/tasks';
-import { data } from '../../../utils/dataTasks';
 import CurrentTasks from '../CurrentTasks/ui/CurrentTasks';
 import AllTasks from '../AllTasks/ui/AllTasks';
 import FilterStatus from '../FilterStatus/ui/FilterStatus';
@@ -55,7 +54,7 @@ const filterCurrentTasks = (tasks: Task[]): Task[] => {
   });
 };
 
-const TaskList: FC = () => {
+const TaskList: FC<{ data: Task[] }> = ({ data }) => {
   const [expandedSections, setExpandedSections] = useState<ExpandedSections>({
     all: true,
     current: true,

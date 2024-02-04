@@ -3,7 +3,7 @@ import styles from './Counter.module.scss';
 
 interface CounterProps {
   title: string;
-  quantity: string;
+  quantity: number;
 }
 
 const Counter: FC<CounterProps> = ({ title, quantity }) => (

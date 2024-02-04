@@ -7,6 +7,7 @@
 
 .taskContainer {
   border-bottom: 1px solid #dcdcdc;
+  cursor: pointer;
 
   .title {
     @include text-style;
@@ -42,4 +43,8 @@
   .deadline {
     @include text-style;
   }
+}
+
+.taskContainer:hover {
+  opacity: .7;
 }

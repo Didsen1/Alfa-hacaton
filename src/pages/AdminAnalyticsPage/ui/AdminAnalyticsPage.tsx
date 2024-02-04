@@ -20,9 +20,9 @@ const AdminAnalyticsPage = () => {
           Аналитика
         </Typography.Title>
         <TaskCounter>
-          <Counter title="Завершенные задачи" quantity="Большой" />
-          <Counter title="Просроченные задачи" quantity="1" />
-          <Counter title="Всего задач" quantity="1" />
+          <Counter title="Завершенные задачи" quantity={31} />
+          <Counter title="Просроченные задачи" quantity={1} />
+          <Counter title="Всего задач" quantity={1} />
         </TaskCounter>
         <Analytics />
       </section>

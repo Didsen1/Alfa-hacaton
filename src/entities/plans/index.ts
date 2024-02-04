@@ -3,7 +3,7 @@ import plansReducer from './model/plansSlice';
 import { type Plan } from './model/types/Plan';
 import type { PlanPanel } from './model/PlanPanel';
 import type { AdminPlan } from './model/AdminPlanPanel';
-import { getPlanById, updatePlanById, getAllPlans, createPlan } from './model/plansApi';
+import { getPlanById, updatePlanById, getAllPlans, createPlan, getCurrentPlan } from './model/plansApi';
 
 export {
   plansReducer,
@@ -15,4 +15,5 @@ export {
   Plan,
   PlanPanel,
   AdminPlan,
+  getCurrentPlan,
 };

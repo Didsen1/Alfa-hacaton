@@ -7,6 +7,7 @@ interface CommentsState {
   comments: Comment[];
   unreadCount?: number;
   currentComment?: Comment;
+  fileLink?: string;
   isLoading: boolean;
   isError: boolean;
   error: AppError;
@@ -23,7 +24,11 @@ const initialState: CommentsState = {
 export const commentsSlice = createSlice({
   name: 'comments',
   initialState,
-  reducers: {},
+  reducers: {
+    clearFileLink: (state) => {
+      state.fileLink = undefined;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getTasksComments.pending, (state) => {
       state.isLoading = true;
@@ -43,13 +48,9 @@ export const commentsSlice = createSlice({
     builder.addCase(createComment.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(createComment.fulfilled, (state, action: PayloadAction<Comment>) => {
+    builder.addCase(createComment.fulfilled, (state) => {
       state.isLoading = false;
       state.isError = false;
-
-      const currentComments = state.comments;
-      currentComments.unshift(action.payload);
-      state.comments = currentComments;
     });
     builder.addCase(createComment.rejected, (state, action: PayloadAction<any>) => {
       state.isLoading = false;
@@ -61,9 +62,10 @@ export const commentsSlice = createSlice({
     builder.addCase(uploadFile.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(uploadFile.fulfilled, (state) => {
+    builder.addCase(uploadFile.fulfilled, (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.isError = false;
+      state.fileLink = action.payload;
     });
     builder.addCase(uploadFile.rejected, (state, action: PayloadAction<any>) => {
       state.isLoading = false;
@@ -89,6 +91,6 @@ export const commentsSlice = createSlice({
   },
 });
 
-export const {} = commentsSlice.actions;
+export const {clearFileLink} = commentsSlice.actions;
 
 export default commentsSlice.reducer;
