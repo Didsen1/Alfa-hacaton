@@ -16,18 +16,18 @@ enum color {
   'На проверке' = 'purple',
 }
 
-const Task: FC<TaskProps> = ({ description, expires_at, name, status }) => {
-  // const [isModalVisible, setIsModalVisible] = useState(false);
+const Task: FC<TaskProps> = ({ description, expires_at, name, status }) => 
+// const [isModalVisible, setIsModalVisible] = useState(false);
 
-  // const showModal = () => {
-  //   setIsModalVisible(true);
-  // };
+// const showModal = () => {
+//   setIsModalVisible(true);
+// };
 
-  // const closeModal = () => {
-  //   setIsModalVisible(false);
-  // };
+// const closeModal = () => {
+//   setIsModalVisible(false);
+// };
 
-  return (
+  (
     <>
       <Table.TRow className={styles.taskContainer}>
         <Table.TCell width="300px">
@@ -55,6 +55,6 @@ const Task: FC<TaskProps> = ({ description, expires_at, name, status }) => {
       </Table.TRow>
       {/* <Sidebar></Sidebar> */}
     </>
-  );
-};
+  )
+;
 export default Task;

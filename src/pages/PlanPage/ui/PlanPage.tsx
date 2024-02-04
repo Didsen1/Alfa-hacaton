@@ -1,8 +1,8 @@
 
-import { useLocation } from 'react-router-dom';
 import type { FC } from 'react';
-import Navbar from 'widgets/Navbar';
+import { useLocation } from 'react-router-dom';
 import { Typography } from "@alfalab/core-components-typography";
+import Navbar from 'widgets/Navbar';
 import EmployeePlanPanel from 'widgets/EmployeePlanPanel';
 import { dataPlanPanel } from 'utils/dataPlanPanel';
 import style from "./PlanPage.module.scss"

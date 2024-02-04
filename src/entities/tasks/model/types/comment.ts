@@ -1,4 +1,4 @@
-import { type Employee } from "entities/employees/model/types/employee";
+import { type Employee } from "entities/employees";
 
 export interface Comment {
   type: string;

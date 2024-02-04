@@ -1,6 +1,6 @@
 import { useState, type FC, type ReactNode } from 'react';
-import { SidePanelDesktop } from '@alfalab/core-components-side-panel/desktop';
 import ReactDOM from 'react-dom';
+import { SidePanelDesktop } from '@alfalab/core-components-side-panel/desktop';
 import style from './Sidebar.module.scss';
 
 interface SidebarProps {

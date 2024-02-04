@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import { Table } from '@alfalab/core-components-table';
 import { Status } from '@alfalab/core-components-status';
 import { Circle } from '@alfalab/core-components-icon-view/circle';
-import { type Plan } from 'entities/plans/model/types/Plan';
+import { type Plan } from 'entities/plans';
 import { type Status as TaskStatus } from 'entities/tasks';
 import { type Employee as TEmployee } from '../../model/types/employee';
 import style from './Employee.module.scss';

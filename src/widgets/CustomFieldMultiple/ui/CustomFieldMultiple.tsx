@@ -1,6 +1,6 @@
+import { type FC } from 'react';
 import { FilterTag } from '@alfalab/core-components-filter-tag';
 import { type FieldProps } from '@alfalab/core-components-select/typings';
-import { type FC } from 'react';
 
 const CustomFieldMultiple: FC<FieldProps> = ({
   label,

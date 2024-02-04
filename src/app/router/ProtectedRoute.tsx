@@ -1,6 +1,4 @@
-import { type FC, useLayoutEffect, type ReactElement } from 'react';
-import { useAppDispatch } from 'app/store/hooks';
-import { checkAuth } from 'entities/user';
+import { type FC, type ReactElement } from 'react';
 import { useRouteComponent } from './routerUtils';
 
 interface ProtectedRouteProps {
@@ -8,7 +6,6 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ Component }) => {
- 
   const routeComponent = useRouteComponent(Component);
   return routeComponent;
 };

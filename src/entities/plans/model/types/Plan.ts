@@ -1,4 +1,4 @@
-import { type Employee } from 'entities/employees/model/types/employee';
+import { type Employee } from "entities/employees";
 import { type Status, type Task } from 'entities/tasks';
 
 export interface Plan {

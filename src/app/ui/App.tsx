@@ -1,17 +1,10 @@
-import { Outlet, useLocation, useNavigation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Header from 'widgets/Header';
-import Sidebar from 'widgets/Sidebar';
-import { OpenTask } from 'entities/tasks';
 import Footer from 'widgets/footer';
-import Navbar from 'widgets/Navbar';
-import TaskCounter from 'widgets/TaskCounter/ui/TaskCounter';
-import TaskList from 'widgets/TaskList/ui/TaskList';
-import { EmployeeList, getAllEmployees } from 'entities/employees';
+import { getAllEmployees } from 'entities/employees';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { useEffect, useLayoutEffect } from 'react';
 import { checkAuth } from 'entities/user';
-import AdminPage from 'pages/AdminPage';
-import AdminAnalyticsPage from 'pages/AdminAnalyticsPage';
 import style from './App.module.scss';
 
 const App = () => {
@@ -29,7 +22,9 @@ const App = () => {
   return (
     <div className={style.App}>
       <Header />
-      <AdminAnalyticsPage/>
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
