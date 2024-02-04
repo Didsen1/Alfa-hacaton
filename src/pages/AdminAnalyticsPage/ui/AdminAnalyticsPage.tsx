@@ -5,27 +5,28 @@ import CrosshairIcon from 'shared/icons/crosshair-icon.svg?react';
 import Navbar, { NavbarLink } from "widgets/Navbar";
 import Counter from "widgets/TaskCounter/ui/Counter/ui/Counter";
 import TaskCounter from "widgets/TaskCounter/ui/TaskCounter";
+import { Typography } from "@alfalab/core-components-typography";
 import style from "./AdminAnalytics.module.scss"
 
 
 const AdminAnalyticsPage = () => {
   const { pathname } = useLocation();
   return (
-    <main>
+    <>
       <Navbar >
         <NavbarLink to="/Admin" text="ИПР" Icon={CrosshairIcon} />
         <NavbarLink to="/Admin/Analytics" text="Аналитика" Icon={ChartIcon} />
       </Navbar>
-      <section>
+      <section className={style.AdminAnalyticsPage}>
+        <Typography.Title tag="h2" className={style.h2}>Аналитика</Typography.Title>
         <TaskCounter>
-          <Counter title="Хуй" quantity="Большой" />
-          <Counter title="Новые задачи" quantity="1" />
-          <Counter title="Новые комментарии" quantity="1" />
+          <Counter title="Завершенные задачи" quantity="Большой" />
+          <Counter title="Просроченные задачи" quantity="1" />
+          <Counter title="Всего задач" quantity="1" />
         </TaskCounter>
         <Analytics />
-
       </section>
-    </main>
+    </>
   );
 
 }

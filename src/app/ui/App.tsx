@@ -29,7 +29,9 @@ const App = () => {
   return (
     <div className={style.App}>
       <Header />
-      <AdminAnalyticsPage/>
+      <main>
+        <AdminPage />
+      </main>
       <Footer />
     </div>
   );
