@@ -1,7 +1,7 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { type AppError } from 'utils/types/AppError';
 import { type Plan } from './types/Plan';
-import { createPlan, getAllPlans, getPlanById, updatePlanById } from './plansApi';
+import { createPlan, getAllPlans, getCurrentPlan, getPlanById, updatePlanById } from './plansApi';
 
 interface PlansState {
   plans: Plan[];
@@ -63,6 +63,21 @@ export const plansSlice = createSlice({
       state.plans = action.payload;
     });
     builder.addCase(getAllPlans.rejected, (state, action: PayloadAction<any>) => {
+      state.isLoading = false;
+      state.isError = true;
+      state.error.message = action.payload.message;
+      state.error.code = action.payload.code;
+    });
+
+    builder.addCase(getCurrentPlan.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getCurrentPlan.fulfilled, (state, action: PayloadAction<Plan>) => {
+      state.isLoading = false;
+      state.isError = false;
+      state.currentPlan = action.payload;
+    });
+    builder.addCase(getCurrentPlan.rejected, (state, action: PayloadAction<any>) => {
       state.isLoading = false;
       state.isError = true;
       state.error.message = action.payload.message;

@@ -3,6 +3,7 @@ import Navbar from 'widgets/Navbar';
 import { Typography } from '@alfalab/core-components-typography';
 import { ButtonDesktop } from '@alfalab/core-components-button/desktop';
 import PlanPanel from 'widgets/PlanPanel';
+import { type Employee } from 'entities/employees';
 import { mockPlan } from 'utils/dataPlan';
 import style from './AdminPlanPage.module.scss';
 
@@ -12,7 +13,11 @@ const AdminPlanPage = () => {
   return (
     <main>
       <Navbar>
-        <PlanPanel expired_at={mockPlan.expired_at} employee={mockPlan.employee} aim={mockPlan.aim_description} />
+        <PlanPanel
+          expired_at={mockPlan.expires_at as string}
+          employee={mockPlan.employee as Employee}
+          aim={mockPlan.aim_description}
+        />
       </Navbar>
       <section className={style.EmployeePlanPage}>
         <Typography.Title tag="h2" className={style.h2}>

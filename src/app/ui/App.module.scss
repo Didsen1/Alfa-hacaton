@@ -9,7 +9,7 @@
 
   main {
     display: flex;
-    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - 60px - 40px);
     flex-grow: 10;
     margin: 56px 0 0;
     height: 100%;

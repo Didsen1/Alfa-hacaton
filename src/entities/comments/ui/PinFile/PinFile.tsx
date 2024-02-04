@@ -1,4 +1,5 @@
 import { useState, type FC, type CSSProperties } from 'react';
+import { useParams } from 'react-router-dom';
 import { Modal } from '@alfalab/core-components-modal';
 import { Dropzone } from '@alfalab/core-components-dropzone';
 import { Attach } from '@alfalab/core-components-attach';
@@ -6,14 +7,19 @@ import CheckmarkMIcon from '@alfalab/icons-glyph/CheckmarkMIcon';
 import CrossMIcon from '@alfalab/icons-glyph/CrossMIcon';
 import { Button } from '@alfalab/core-components-button';
 import ContainerMIcon from '@alfalab/icons-glyph/ContainerMIcon';
+import { uploadFile } from 'entities/comments';
+import { useAppDispatch } from 'app/store/hooks';
 import style from './PinFile.module.scss';
 
 interface PinFileProps {}
 
 const PinFile: FC<PinFileProps> = () => {
+  const dispatch = useAppDispatch();
+  const { task_id } = useParams();
   const [files, setFiles] = useState<File[]>([]);
   const [error, setError] = useState<string>('');
-  const [downloadStatus, setDownloadStatus] = useState('success');
+
+  const normalizedTaskId = Number(task_id);
 
   const checkFileSize = (files: File[]) => {
     if (files[0].size / 1024 > 10240) {
@@ -32,10 +38,9 @@ const PinFile: FC<PinFileProps> = () => {
     checkFileSize(payload.files);
   };
 
-  // const onDownloadStatusChange = (_, payload) => {
-  //   setDownloadStatus(payload.value);
-  //   setFile([]);
-  // };
+  const sendFile = () => {
+    dispatch(uploadFile([normalizedTaskId, files[0]]));
+  };
 
   const stylesStatus: CSSProperties = {
     display: 'flex',
@@ -51,8 +56,6 @@ const PinFile: FC<PinFileProps> = () => {
     marginTop: 8,
   };
 
-  const isError = Boolean(files) && downloadStatus === 'error';
-
   const statusDropzone = (text: string, Icon: React.FC<React.SVGProps<SVGSVGElement>>) => (
     <div style={stylesStatus}>
       <Icon />
@@ -66,8 +69,8 @@ const PinFile: FC<PinFileProps> = () => {
         Прикрепить файл
       </Modal.Header>
       <Modal.Content className={style.body}>
-        <Dropzone error={isError} onDrop={handleDrop} block>
-          {files?.length && downloadStatus === 'success'
+        <Dropzone error={Boolean(error)} onDrop={handleDrop} block>
+          {files?.length
             ? statusDropzone('Успех', CheckmarkMIcon)
             : error
               ? statusDropzone(error, CrossMIcon)
@@ -84,7 +87,7 @@ const PinFile: FC<PinFileProps> = () => {
           name="file"
           onClear={() => setFiles([])}
         />
-        <Button disabled={!files.length || !!error} className={style.footerButton} view="primary">
+        <Button disabled={!files.length || !!error} onClick={sendFile} className={style.footerButton} view="primary">
           Прикрепить
         </Button>
       </Modal.Footer>

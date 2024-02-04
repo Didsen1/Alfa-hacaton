@@ -6,11 +6,25 @@
     margin-top: 8px;
   }
 
+  .inputsWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .disabler {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+  }
+
   .dateWrapper {
     display: flex;
     align-items: center;
 
-    span {
+    .status {
       width: 133px;
       padding: 0 7px;
       color: #57a37f;
@@ -20,36 +34,25 @@
     }
   }
 
-  .font {
-    font-family: inherit !important;
-
-    :only-child {
-      font-family: inherit !important;
-    }
-  }
-
   .collapse > div > div {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
+  .font {
+    font-family: inherit !important;
+    color: black !important;
+
+    :only-child {
+      font-family: inherit !important;
+    }
+  }
+
   .footer {
     display: flex;
     flex-direction: column;
     gap: 24px;
-
-    .commentInputWrapper {
-      display: flex;
-      gap: 8px;
-    }
-
-    .sendButton {
-      background-color: #f0f0f0;
-      height: 56px;
-      width: 56px;
-      border-radius: 100%;
-    }
 
     .footerButtonsWrapper {
       display: flex;

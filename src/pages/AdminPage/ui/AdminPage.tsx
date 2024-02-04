@@ -24,9 +24,9 @@ const AdminPage: FC = () => {
           ИПР
         </Typography.Title>
         <TaskCounter>
-          <Counter title="Всего ИПР" quantity="Большой" />
-          <Counter title="Ожидание проверки" quantity="1" />
-          <Counter title="Новые комментарии" quantity="1" />
+          <Counter title="Всего ИПР" quantity={1} />
+          <Counter title="Ожидание проверки" quantity={1} />
+          <Counter title="Новые комментарии" quantity={1} />
         </TaskCounter>
         <ButtonDesktop view="accent" className={style.button}>
           Добавить ИПР
