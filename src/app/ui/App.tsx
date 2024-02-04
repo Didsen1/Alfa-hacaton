@@ -10,6 +10,8 @@ import { EmployeeList, getAllEmployees } from 'entities/employees';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { useEffect, useLayoutEffect } from 'react';
 import { checkAuth } from 'entities/user';
+import AdminPage from 'pages/AdminPage';
+import AdminAnalyticsPage from 'pages/AdminAnalyticsPage';
 import style from './App.module.scss';
 
 const App = () => {
@@ -27,9 +29,7 @@ const App = () => {
   return (
     <div className={style.App}>
       <Header />
-      <main>
-        <Outlet />
-      </main>
+      <AdminAnalyticsPage/>
       <Footer />
     </div>
   );
