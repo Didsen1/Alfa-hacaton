@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import ChainIcon from 'shared/icons/chain-icon.svg?react';
 import DocumentIcon from 'shared/icons/document-icon.svg?react';
-import { type Comment as TComment } from '../../model/types/Comment';
+import { type Comment as TComment } from '../../model/types/comment';
 import style from './Comment.module.scss';
 
 interface CommentProps extends TComment {}
