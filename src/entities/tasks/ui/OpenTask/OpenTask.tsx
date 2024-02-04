@@ -8,10 +8,9 @@ import { Textarea } from '@alfalab/core-components-textarea';
 import { Collapse } from '@alfalab/core-components-collapse';
 import { Button } from '@alfalab/core-components-button';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
-import { CommentComponent, getTasksComments } from 'entities/comments';
+import { CommentComponent, getTasksComments, CommentInput } from 'entities/comments';
 import { getTaskById, updateTaskById } from 'entities/tasks';
 import style from './OpenTask.module.scss';
-import CommentInput from '../../../comments/ui/CommentInput/CommentInput';
 import { AppStatus, type Task } from '../../model/types/Task';
 
 const OpenTask: FC = () => {

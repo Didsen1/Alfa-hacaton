@@ -36,7 +36,7 @@ const Comment: FC<CommentProps> = ({ author, content, created_at, type }) => {
 
       <div className={style.authorWrapper}>
         <span>{author?.full_name}</span>
-        <span>{created_at}</span>
+        <span>{new Date(created_at).toLocaleString()}</span>
       </div>
     </div>
   );
