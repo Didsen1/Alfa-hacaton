@@ -8,7 +8,7 @@ export const getTasksComments = createAsyncThunk<Comment[], number>(
   'comments/getTasksComments',
   async (task_id, thunkAPI) => {
     try {
-      const response = await axios.get<Comment[]>(`${BASE_URL}/tasks/${task_id}/comments`, {
+      const response = await axios.get<Comment[]>(`${BASE_URL}/api/v1/tasks/${task_id}/comments`, {
         headers: {
           'Access-Control-Allow-Headers': 'Content-Type',
           'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export const createComment = createAsyncThunk<null, [number, Partial<Comment>]>(
   'comments/createComment',
   async ([task_id, comment], thunkAPI) => {
     try {
-      const response = await axios.post<null>(`${BASE_URL}/tasks/${task_id}/comments`, comment, {
+      const response = await axios.post<null>(`${BASE_URL}/api/v1/tasks/${task_id}/comments`, comment, {
         headers: {
           'Access-Control-Allow-Headers': 'Content-Type',
           'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ export const uploadFile = createAsyncThunk<string, [number, File]>(
     formData.append('file', file);
 
     try {
-      const response = await axios.post<string>(`${BASE_URL}/tasks/${task_id}/upload`, formData, {
+      const response = await axios.post<string>(`${BASE_URL}/api/v1/tasks/${task_id}/upload`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem(TOKEN_KEY)}`,
         },
@@ -66,7 +66,7 @@ export const uploadFile = createAsyncThunk<string, [number, File]>(
 
 export const getUnreadCommentsCount = createAsyncThunk<number>('comments/getUnreadCommentsCount', async (_, thunkAPI) => {
   try {
-    const response = await axios.get<number>(`${BASE_URL}/comments/unread`, {
+    const response = await axios.get<number>(`${BASE_URL}/api/v1/comments/unread`, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',

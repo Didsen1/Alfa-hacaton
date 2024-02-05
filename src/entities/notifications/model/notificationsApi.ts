@@ -8,7 +8,7 @@ export const getAllNotifications = createAsyncThunk<Notification[]>(
   'notifications/getAllNotifications',
   async (_, thunkApi) => {
     try {
-      const response = await axios.patch<Notification[]>(`${BASE_URL}/notifications`, {
+      const response = await axios.patch<Notification[]>(`${BASE_URL}/api/v1/notifications`, {
         headers: {
           'Access-Control-Allow-Headers': 'Content-Type',
           'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export const setNotificationsAsReadByIds = createAsyncThunk<null, number[]>(
   'notifications/setNotificationsAsReadByIds',
   async (ids, thunkApi) => {
     try {
-      const response = await axios.patch<null>(`${BASE_URL}/notifications/read`, ids, {
+      const response = await axios.patch<null>(`${BASE_URL}/api/v1/notifications/read`, ids, {
         headers: {
           'Access-Control-Allow-Headers': 'Content-Type',
           'Content-Type': 'application/json',

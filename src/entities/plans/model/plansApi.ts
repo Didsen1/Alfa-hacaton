@@ -6,7 +6,7 @@ import { type Plan } from './types/Plan';
 
 export const getPlanById = createAsyncThunk<Plan, number>('plans/getPlanById', async (id, thunkApi) => {
   try {
-    const response = await axios.get<Plan>(`${BASE_URL}/plans/${id}`, {
+    const response = await axios.get<Plan>(`${BASE_URL}/api/v1/plans/${id}`, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export const updatePlanById = createAsyncThunk<Plan, [number, Partial<Plan>]>(
   'plans/updatePlanById',
   async ([id, plan], thunkApi) => {
     try {
-      const response = await axios.patch<Plan>(`${BASE_URL}/plans/${id}`, plan, {
+      const response = await axios.patch<Plan>(`${BASE_URL}/api/v1/plans/${id}`, plan, {
         headers: {
           'Access-Control-Allow-Headers': 'Content-Type',
           'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export const updatePlanById = createAsyncThunk<Plan, [number, Partial<Plan>]>(
 
 export const getAllPlans = createAsyncThunk<Plan[]>('plans/getAllPlans', async (_, thunkApi) => {
   try {
-    const response = await axios.get<Plan[]>(`${BASE_URL}/plans`, {
+    const response = await axios.get<Plan[]>(`${BASE_URL}/api/v1/plans`, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export const getAllPlans = createAsyncThunk<Plan[]>('plans/getAllPlans', async (
 
 export const getCurrentPlan = createAsyncThunk<Plan>('plans/getCurrentPlan', async (_, thunkApi) => {
   try {
-    const response = await axios.get<Plan>(`${BASE_URL}/plans`, {
+    const response = await axios.get<Plan>(`${BASE_URL}/api/v1/plans`, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export const getCurrentPlan = createAsyncThunk<Plan>('plans/getCurrentPlan', asy
 
 export const createPlan = createAsyncThunk<Plan, Partial<Plan>>('plans/createPlan', async (plan, thunkApi) => {
   try {
-    const response = await axios.post<Plan>(`${BASE_URL}/plans`, plan, {
+    const response = await axios.post<Plan>(`${BASE_URL}/api/v1/plans`, plan, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',

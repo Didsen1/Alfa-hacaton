@@ -1,4 +1,4 @@
-import { type FC, useEffect, useState, type ChangeEvent } from 'react';
+import { type FC, useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import { useParams } from 'react-router-dom';
 import { SidePanelDesktop } from '@alfalab/core-components-side-panel/desktop';
 import { Input } from '@alfalab/core-components-input';
@@ -9,14 +9,15 @@ import { Collapse } from '@alfalab/core-components-collapse';
 import { Button } from '@alfalab/core-components-button';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { CommentComponent, getTasksComments, CommentInput } from 'entities/comments';
+import { getPlanById } from 'entities/plans';
 import { getTaskById, updateTaskById } from 'entities/tasks';
 import style from './OpenTask.module.scss';
 import { AppStatus, type Task } from '../../model/types/Task';
 
-const OpenTask: FC = () => {
+const OpenTask: FC<{ closeSidebar?: () => void }> = ({ closeSidebar }) => {
   const task = useAppSelector((state) => state.tasks.currentTask);
   const { comments } = useAppSelector((state) => state.comments);
-  const { task_id } = useParams();
+  const { task_id, plan_id } = useParams();
   const { type: userRole } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
@@ -43,18 +44,48 @@ const OpenTask: FC = () => {
     dispatch(updateTaskById([normalizeTaskId, { status: 'under_review' }]));
   };
 
+  const editTask = () => {
+    dispatch(
+      updateTaskById([
+        normalizeTaskId,
+        { name: formData.taskName, expires_at: formData.date, description: formData.description },
+      ])
+    );
+    dispatch(getPlanById(Number(plan_id)));
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (userRole === 'employee') {
+      if (task?.status === 'in_progress') {
+        sendForVerification();
+      }
+    }
+
+    if (userRole === 'superior') {
+      if (task?.status === 'in_progress' || task?.status === 'created') {
+        editTask();
+      }
+    }
+  };
+
   useEffect(() => {
     if (normalizeTaskId) {
       dispatch(getTaskById(normalizeTaskId));
       dispatch(getTasksComments(normalizeTaskId));
+      setFormData({
+        date: task?.expires_at || '',
+        description: task?.description || '',
+        taskName: task?.name || '',
+      });
     }
-  }, [dispatch, normalizeTaskId]);
+  }, [dispatch, normalizeTaskId, task?.created_at, task?.description, task?.expires_at, task?.name]);
 
   const renderFooterButtons = (task: Task) => {
     if (userRole === 'employee') {
       return task?.status === 'in_progress' ? (
         <>
-          <Button view="primary" onClick={sendForVerification}>
+          <Button view="primary" type="submit">
             На проверку
           </Button>
           {/* <Button>Отменить</Button> */}
@@ -68,6 +99,10 @@ const OpenTask: FC = () => {
           <Button view="primary">Принять</Button>
           <Button>На доработку</Button>
         </>
+      ) : task?.status === 'created' || task?.status === 'in_progress' ? (
+        <Button type="submit" view="primary">
+          Редактировать
+        </Button>
       ) : null;
     }
 
@@ -75,17 +110,18 @@ const OpenTask: FC = () => {
   };
 
   return (
-    <div className={style.OpenTask}>
+    <form onSubmit={handleSubmit} className={style.OpenTask}>
       <SidePanelDesktop.Header />
       <SidePanelDesktop.Content className={style.content}>
         <div className={style.inputsWrapper}>
           {isDisabled && <div className={style.disabler} />}
           <Input
             className={style.font}
+            required
             size="m"
             name="taskName"
             onChange={handleChange}
-            value={formData.taskName || task?.name}
+            value={formData.taskName}
             block
             type="text"
             placeholder="  Название задачи"
@@ -93,11 +129,13 @@ const OpenTask: FC = () => {
           <div className={style.dateWrapper}>
             <UniversalDateInput
               className={style.font}
+              required
               onChange={handleChange}
+              pattern="\d{2}\.\d{2}\.\d{4}"
               block
               size="m"
               name="date"
-              value={formData.date || task?.expires_at}
+              value={formData.date}
               view="date-range"
               placeholder="  Дата"
               rightAddons={<CalendarIcon style={{ marginRight: 8 }} />}
@@ -106,10 +144,11 @@ const OpenTask: FC = () => {
           </div>
           <Textarea
             className={style.font}
+            required
             onChange={handleChange}
             name="description"
             size="m"
-            value={formData.description || task?.description}
+            value={formData.description}
             placeholder="  Опишите задачу"
             block
             minRows={20}
@@ -128,7 +167,7 @@ const OpenTask: FC = () => {
         </div>
         <div className={style.footerButtonsWrapper}>{task && renderFooterButtons(task)}</div>
       </SidePanelDesktop.Footer>
-    </div>
+    </form>
   );
 };
 

@@ -6,7 +6,7 @@ import { type Employee } from './types/employee';
 
 export const getAllEmployees = createAsyncThunk<Employee[]>('employees/getAllEmployees', async (_, thunkApi) => {
   try {
-    const response = await axios.get<Employee[]>(`${BASE_URL}/employees`, {
+    const response = await axios.get<Employee[]>(`${BASE_URL}/api/v1/employees`, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export const getAllEmployees = createAsyncThunk<Employee[]>('employees/getAllEmp
 
 export const getEmployeeById = createAsyncThunk<Employee, number>('employees/getEmployeeById', async (id, thunkApi) => {
   try {
-    const response = await axios.get<Employee>(`${BASE_URL}/employees/${id}`, {
+    const response = await axios.get<Employee>(`${BASE_URL}/api/v1/employees/${id}`, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
