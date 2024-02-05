@@ -20,6 +20,7 @@ const AdminPage: FC = () => {
   const { plans } = useAppSelector((state) => state.plans);
   const { unreadCount } = useAppSelector((state) => state.comments);
 
+
   useEffect(() => {
     dispatch(getAllEmployees());
     dispatch(getUnreadCommentsCount());
@@ -28,6 +29,10 @@ const AdminPage: FC = () => {
 
   const openModal = () => {
     setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -55,11 +60,11 @@ const AdminPage: FC = () => {
           <div>
             <Search />
           </div>
-          <EmployeeList employees={employees} />
+          <EmployeeList plans={plans} />
         </div>
       </section>
       <AppModal isOpen={isOpen} setIsOpen={setIsOpen}>
-        <CreatePlanComponent />
+        <CreatePlanComponent closeModal={closeModal} />
       </AppModal>
     </>
   );

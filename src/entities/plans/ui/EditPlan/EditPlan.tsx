@@ -9,16 +9,17 @@ import { updatePlanById } from 'entities/plans';
 import { useParams } from 'react-router-dom';
 import style from './EditPlan.module.scss';
 
-interface EditPlanProps {}
+interface EditPlanProps {
+  closeModal?: () => void;
+}
 
-const EditPlanComponent: FC<EditPlanProps> = () => {
+const EditPlanComponent: FC<EditPlanProps> = ({ closeModal }) => {
   const dispatch = useAppDispatch();
   const { plan_id } = useParams();
   const [formData, setFormData] = useState({
     aim: '',
     date: '',
   });
-
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement> | null) => {
     if (event) {
@@ -32,12 +33,10 @@ const EditPlanComponent: FC<EditPlanProps> = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(
-      updatePlanById([
-        Number(plan_id),
-        { aim_description: formData.aim, expires_at: formData.date },
-      ])
-    );
+    dispatch(updatePlanById([Number(plan_id), { aim_description: formData.aim, expires_at: formData.date }]));
+    if (closeModal) {
+      closeModal();
+    }
   };
 
   return (

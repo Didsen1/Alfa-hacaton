@@ -51,7 +51,6 @@ const CommentInput: FC = () => {
     } else {
       dispatch(createComment([normalizeTaskId, { type: 'text', content: inputValue }]));
     }
-
     setInputValue('');
   };
 
@@ -61,7 +60,13 @@ const CommentInput: FC = () => {
 
   return (
     <>
-      <form onSubmit={sendComment} className={style.commentInputWrapper}>
+      <form
+        onSubmit={(e) => {
+          sendComment(e);
+          setInputValue('');
+        }}
+        className={style.commentInputWrapper}
+      >
         <div className={style.CommentInput}>
           <input type="text" value={inputValue} onChange={handleChange} placeholder="Комметарий" />
           <button onClick={openModal} aria-label="attach-button" type="button">
@@ -71,7 +76,10 @@ const CommentInput: FC = () => {
         <IconButton
           className={style.sendButton}
           name="commentButton"
-          onClick={sendComment}
+          onClick={(e) => {
+            sendComment(e);
+            setInputValue('');
+          }}
           type="submit"
           icon={PaperAirplaneMIcon}
         />
