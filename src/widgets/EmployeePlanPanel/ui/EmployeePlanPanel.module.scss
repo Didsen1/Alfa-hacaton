@@ -1,0 +1,48 @@
+.panelWrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  padding: 28px 20px 40px;
+  border-radius: 16px;
+  gap: 32px;
+  width: 295px;
+  box-sizing: border-box;
+  text-align: left;
+
+  p,
+  h3 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .supervisorWrapper {
+    display: flex;
+    flex-direction: column;
+
+    .supervisorTitle {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .supervisorName {
+      margin-bottom: 8px;
+    }
+
+    .supervisorPosition {
+      color: #999898;
+    }
+  }
+
+  .aimWrapper {
+    .aimTitle {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+  }
+
+  .expired_atTitle {
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+}

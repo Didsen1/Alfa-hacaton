@@ -1,0 +1,23 @@
+.adminAddTask {
+  display: flex;
+  gap: 20px;
+  text-align: left;
+  margin-bottom: 100px;
+
+  .widgets {
+    margin: 0;
+  }
+
+  .section {
+    margin: 60px 0;
+
+    .h2 {
+      margin-bottom: 40px;
+    }
+
+    .button {
+      min-width: 295px;
+      margin: 0 0 24px;
+    }
+  }
+}

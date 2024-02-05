@@ -1,0 +1,70 @@
+.OpenTask {
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .inputsWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .disabler {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+  }
+
+  .dateWrapper {
+    display: flex;
+    align-items: center;
+
+    .status {
+      width: 133px;
+      padding: 0 7px;
+      color: #57a37f;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  .collapse > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .font {
+    font-family: inherit !important;
+    color: black !important;
+
+    :only-child {
+      font-family: inherit !important;
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .footerButtonsWrapper {
+      display: flex;
+      gap: 24px;
+
+      button {
+        padding: 20px 60px;
+        box-sizing: border-box;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 16px;
+      }
+    }
+  }
+}

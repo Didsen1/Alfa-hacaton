@@ -1,0 +1,19 @@
+@mixin text-style {
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+  height: 100%;
+}
+
+.taskContainer {
+  border-bottom: 1px solid #dcdcdc;
+
+  .title {
+    @include text-style;
+
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+  }
+}

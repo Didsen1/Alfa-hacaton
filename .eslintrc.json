@@ -31,12 +31,14 @@
       }
     ],
     "import/no-unresolved": "off",
+    "camelcase": "off",
     "no-unused-vars": "off",
     "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "warn",
     "react/function-component-definition": "off",
     "no-shadow": "off",
+    "no-nested-ternary": "off",
     "import/no-extraneous-dependencies": "off",
     "max-len": [
       "error",

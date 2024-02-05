@@ -1,0 +1,60 @@
+.panelWrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F5;
+    padding: 32px 20px 40px;
+    border-radius: 16px;
+    width: 295px;
+    box-sizing: border-box;
+    text-align: left;
+
+    .employeeWrapper {
+        display: flex;
+        margin-bottom: 24px;
+
+        .employeeData {
+            margin-left: 16px;
+
+            .employeeName {
+                font-weight: 700;
+                margin-bottom: 8px;
+            }
+
+            .employeePosition {
+                font-size: 16px;
+                color: #999898;
+            }
+        }
+    }
+
+    p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .aimWrapper {
+        margin-bottom: 16px;
+
+        .aimTitle {
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .aim {
+            color: #999898;
+        }
+    }
+
+    .expired_atWrapper {
+        margin-bottom: 28px;
+
+        .expired_atTitle {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .expired_at {
+            color: #999898;
+        }
+    }
+}

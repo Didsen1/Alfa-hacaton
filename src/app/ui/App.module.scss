@@ -1,19 +1,22 @@
 .App {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   text-align: center;
-  height: 100vh;
-}
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: 1280px;
+  padding: 20px;
 
-.Applogo {
-  height: 10vmin;
-  background-color: none;
-  pointer-events: none;
-}
+  main {
+    display: flex;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - 60px - 40px);
+    flex-grow: 10;
+    margin: 56px 0 0;
+    height: 100%;
 
-.Appheader {
-  display: flex;
-  align-items: start;
-  justify-content: center;
+    .idp {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }

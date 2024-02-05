@@ -1,29 +1,36 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import logo from 'shared/icons/logo.svg';
+import { Outlet } from 'react-router-dom';
+import Header from 'widgets/Header';
+import { getAllEmployees } from 'entities/employees';
+import { useAppDispatch, useAppSelector } from 'app/store/hooks';
+import { useEffect, useLayoutEffect } from 'react';
+import { checkAuth } from 'entities/user';
+import { Loader } from 'widgets/Loader';
+import Footer from 'widgets/footer';
 import style from './App.module.scss';
 
 const App = () => {
-  const { pathname } = useLocation();
+  const dispatch = useAppDispatch();
+  const { type } = useAppSelector((state) => state.user);
+
+  useLayoutEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch, type]);
+
+  useEffect(() => {
+    dispatch(getAllEmployees());
+  }, [dispatch]);
 
   return (
-    <div className={style.App}>
-      <header className={style.Appheader}>
-        <img src={logo} className={style.Applogo} alt="logo" />
-        <p>header</p>
-      </header>
-      {pathname === '/' && (
-        <>
-          <Link to="/counter">Counter</Link>
-          <Link to="/quotes">Quotes</Link>
-        </>
-      )}
-      <Outlet />
-
-      <footer>
-        <p>footer</p>
-        <img src={logo} className={style.Applogo} alt="logo" />
-      </footer>
-    </div>
+    <>
+      <div className={style.App}>
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+      <Loader />
+    </>
   );
 };
 

@@ -1,0 +1,19 @@
+.employeeCell {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    box-sizing: border-box;
+
+    .circle {
+        margin-right: 12px;
+    }
+
+    p {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .pWhite {
+        color: #D9D9D9;
+    }
+}

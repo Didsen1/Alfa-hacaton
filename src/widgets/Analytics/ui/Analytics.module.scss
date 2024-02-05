@@ -1,0 +1,51 @@
+.Analytics {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 100px;
+
+  .h2 {
+    text-align: start;
+    margin-bottom: 21px;
+  }
+
+  .heading {
+    text-align: start;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 32px;
+  }
+
+  .countersWrapper {
+    display: flex;
+    gap: 20px;
+  }
+
+  .indicatorsWrapper {
+    display: flex;
+    gap: 46px;
+
+    .indicator {
+      display: flex;
+      flex-direction: column;
+      width: 132px;
+      align-items: flex-start;
+
+      .indicatorValue {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .indicatorName {
+        color: #919294;
+      }
+    }
+  }
+
+
+
+  .chartWrapper {
+    display: flex;
+    gap: 20px;
+  }
+}

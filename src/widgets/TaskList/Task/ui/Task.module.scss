@@ -1,0 +1,50 @@
+@mixin text-style {
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+  height: 100%;
+}
+
+.taskContainer {
+  border-bottom: 1px solid #dcdcdc;
+  cursor: pointer;
+
+  .title {
+    @include text-style;
+
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+  }
+
+  .description {
+    @include text-style;
+
+    align-self: stretch;
+    width: 272px;
+    height: 100%;
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .status {
+    @include text-style;
+
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+
+  .deadline {
+    @include text-style;
+  }
+}
+
+.taskContainer:hover {
+  opacity: .7;
+}
