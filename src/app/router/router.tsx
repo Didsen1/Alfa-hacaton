@@ -7,6 +7,7 @@ import AdminPage from 'pages/AdminPage';
 import PlanPage from 'pages/PlanPage';
 import Sidebar from 'widgets/Sidebar';
 import { OpenTask } from 'entities/tasks';
+import AdminAddTaskPage from 'pages/AdminAddTaskPage';
 import ProtectedRoute from './ProtectedRoute';
 
 export const router = createBrowserRouter([
@@ -29,14 +30,40 @@ export const router = createBrowserRouter([
         children: [
           {
             path: '/plan/:task_id',
-            element: <ProtectedRoute Component={<Sidebar><OpenTask /></Sidebar>} />,
+            element: (
+              <ProtectedRoute
+                Component={
+                  <Sidebar>
+                    <OpenTask />
+                  </Sidebar>
+                }
+              />
+            ),
           },
-        ]
+        ],
       },
-      
+
       {
         path: '/admin',
         element: <ProtectedRoute Component={<AdminPage />} />,
+      },
+      {
+        path: '/admin/:plan_id',
+        element: <ProtectedRoute Component={<AdminAddTaskPage />} />,
+        children: [
+          {
+            path: '/admin/:plan_id/:task_id',
+            element: (
+              <ProtectedRoute
+                Component={
+                  <Sidebar>
+                    <OpenTask />
+                  </Sidebar>
+                }
+              />
+            ),
+          },
+        ],
       },
       {
         path: '/admin/analytics',

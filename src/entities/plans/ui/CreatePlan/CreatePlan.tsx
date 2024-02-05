@@ -37,9 +37,9 @@ const CreatePlanComponent: FC<CreatePlanProps> = () => {
         <Button className={style.footerButton} block size="s" view="primary">
           Добавить
         </Button>
-        <Button className={style.footerButton} block size="s">
+        {/* <Button className={style.footerButton} block size="s">
           Отменить
-        </Button>
+        </Button> */}
       </Modal.Footer>
     </>
   );

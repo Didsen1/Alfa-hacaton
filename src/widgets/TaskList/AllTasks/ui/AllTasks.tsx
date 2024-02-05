@@ -7,7 +7,7 @@ import styles from './AllTasks.module.scss';
 
 interface AllTasksProps {
   itemRef?: RefObject<HTMLTableElement>;
-  data: TTask[];
+  data?: TTask[];
 }
 
 const AllTasks: FC<AllTasksProps> = ({ itemRef, data }) => (
@@ -27,7 +27,7 @@ const AllTasks: FC<AllTasksProps> = ({ itemRef, data }) => (
       </Table.THeadCell>
     </Table.THead>
     <Table.TBody>
-      {data.length !== 0 ? (
+      {data?.length ? (
         <>
           {data.map((task) => (
             <Task key={task.id} {...task} />

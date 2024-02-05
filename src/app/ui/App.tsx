@@ -4,6 +4,7 @@ import { getAllEmployees } from 'entities/employees';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
 import { useEffect, useLayoutEffect } from 'react';
 import { checkAuth } from 'entities/user';
+import { Loader } from 'widgets/Loader';
 import Footer from 'widgets/footer';
 import style from './App.module.scss';
 
@@ -20,13 +21,16 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div className={style.App}>
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <div className={style.App}>
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+      <Loader />
+    </>
   );
 };
 

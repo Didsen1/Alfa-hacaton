@@ -11,12 +11,12 @@ const AdminPlanPage = () => {
   const { pathname } = useLocation();
 
   return (
-    <main>
+    <div>
       <Navbar>
         <PlanPanel
-          expired_at={mockPlan.expires_at as string}
+          expires_at={mockPlan.expires_at as string}
           employee={mockPlan.employee as Employee}
-          aim={mockPlan.aim_description}
+          aim_description={mockPlan.aim_description}
         />
       </Navbar>
       <section className={style.EmployeePlanPage}>
@@ -27,7 +27,7 @@ const AdminPlanPage = () => {
           Добавить ИПР
         </ButtonDesktop>
       </section>
-    </main>
+    </div>
   );
 };
 export default AdminPlanPage;

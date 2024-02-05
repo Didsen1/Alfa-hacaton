@@ -6,7 +6,7 @@ import { type Task } from './types/Task';
 
 export const getTaskById = createAsyncThunk<Task, number>('tasks/getTaskById', async (id, thunkApi) => {
   try {
-    const response = await axios.get<Task>(`${BASE_URL}/tasks/${id}`, {
+    const response = await axios.get<Task>(`${BASE_URL}/api/v1/tasks/${id}`, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export const updateTaskById = createAsyncThunk<Task, [number, Partial<Task>]>(
   'tasks/updateTaskById',
   async ([id, task], thunkApi) => {
     try {
-      const response = await axios.patch<Task>(`${BASE_URL}/tasks/${id}/`, task, {
+      const response = await axios.patch<Task>(`${BASE_URL}/api/v1/tasks/${id}/`, task, {
         headers: {
           'Access-Control-Allow-Headers': 'Content-Type',
           'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export const updateTaskById = createAsyncThunk<Task, [number, Partial<Task>]>(
 
 export const getAllTasks = createAsyncThunk<Task[], number>('tasks/getAllTasks', async (plan_id, thunkApi) => {
   try {
-    const response = await axios.get<Task[]>(`${BASE_URL}/plans/${plan_id}/tasks/`, {
+    const response = await axios.get<Task[]>(`${BASE_URL}/api/v1/plans/${plan_id}/tasks/`, {
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json',
@@ -55,18 +55,21 @@ export const getAllTasks = createAsyncThunk<Task[], number>('tasks/getAllTasks',
   }
 });
 
-export const createTask = createAsyncThunk<Task, Partial<Task>>('tasks/createTask', async (task, thunkApi) => {
-  try {
-    const response = await axios.post<Task>(`${BASE_URL}/tasks/`, task, {
-      headers: {
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem(TOKEN_KEY)}`,
-      },
-    });
-    return response.data;
-  } catch (err: any) {
-    console.error(`Ошибка при запросе createTask: ${err.code}:${err.message}`);
-    return thunkApi.rejectWithValue({ message: err.message, code: err.code });
+export const createTask = createAsyncThunk<Task, [number, Partial<Task>]>(
+  'tasks/createTask',
+  async ([plan_id, task], thunkApi) => {
+    try {
+      const response = await axios.post<Task>(`${BASE_URL}/api/v1/plans/${plan_id}/tasks/`, task, {
+        headers: {
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem(TOKEN_KEY)}`,
+        },
+      });
+      return response.data;
+    } catch (err: any) {
+      console.error(`Ошибка при запросе createTask: ${err.code}:${err.message}`);
+      return thunkApi.rejectWithValue({ message: err.message, code: err.code });
+    }
   }
-});
+);
