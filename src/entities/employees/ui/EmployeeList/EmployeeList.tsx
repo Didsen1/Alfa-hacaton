@@ -1,15 +1,15 @@
 import type { FC } from 'react';
 import { Table } from '@alfalab/core-components-table';
-import { type Employee as TEmployee } from '../../model/types/employee';
+import { type Plan } from 'entities/plans';
 import Employee from '../Employee/Employee';
 
 import style from './EmployeeList.module.scss';
 
 interface EmployeeListProps {
-  employees: TEmployee[];
+  plans: Plan[];
 }
 
-const EmployeeList: FC<EmployeeListProps> = ({ employees,  }) => (
+const EmployeeList: FC<EmployeeListProps> = ({ plans }) => (
   <div className={style.conteiner}>
     <Table className={style.table}>
       <Table.THead>
@@ -24,9 +24,9 @@ const EmployeeList: FC<EmployeeListProps> = ({ employees,  }) => (
         </Table.THeadCell>
       </Table.THead>
       <Table.TBody>
-        {!!employees.length &&
-          employees.map((employee) => (
-            <Employee key={employee.id} id={4} expired_at="fgbf" status="in_progress" employee={employee} />
+        {plans.length &&
+          plans.map((plan) => (
+            <Employee key={plan?.id} expires_at={plan?.expires_at} status={plan?.status} employee={plan?.employee} />
           ))}
       </Table.TBody>
     </Table>

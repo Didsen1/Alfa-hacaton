@@ -6,7 +6,7 @@ import Navbar from 'widgets/Navbar';
 import PlanPanel from 'widgets/PlanPanel/index';
 import { ButtonDesktop } from '@alfalab/core-components-button/desktop';
 import AllTasks from 'widgets/TaskList/AllTasks/index';
-import { CreateTaskComponent } from 'entities/tasks';
+import { CreateTaskComponent, getAllTasks } from 'entities/tasks';
 import Sidebar from 'widgets/Sidebar';
 import { getPlanById } from 'entities/plans';
 import style from './AdminAddTaskPage.module.scss';
@@ -16,9 +16,11 @@ const AdminAddTaskPage: FC = () => {
   const [isCreateTaskOpen, setIsCreateTaskOpen] = useState(false);
   const { plan_id } = useParams();
   const plan = useAppSelector((state) => state.plans.currentPlan);
+  const tasks = useAppSelector((state) => state.tasks.tasks);
 
   useEffect(() => {
     dispatch(getPlanById(Number(plan_id)));
+    dispatch(getAllTasks(Number(plan_id)));
   }, [dispatch, plan_id]);
 
   const openCreateTaskModal = () => {
@@ -44,7 +46,7 @@ const AdminAddTaskPage: FC = () => {
           <ButtonDesktop onClick={openCreateTaskModal} view="accent" className={style.button}>
             Добавить задачу
           </ButtonDesktop>
-          <AllTasks data={plan?.tasks} />
+          <AllTasks data={tasks} />
         </section>
       </div>
       <Outlet />

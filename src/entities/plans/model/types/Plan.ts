@@ -7,7 +7,7 @@ export interface Plan {
   id?: number;
   status?: TaskStatus;
   created_at?: string;
-  employee?: Employee;
+  employee?: Partial<Employee>;
   tasks?: Task[];
 }
 
