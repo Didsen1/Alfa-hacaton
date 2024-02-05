@@ -9,7 +9,6 @@ export default defineConfig({
   server: {
     open: true,
   },
-  base: 'http://51.250.6.208',
   test: {
     globals: true,
     environment: 'jsdom',
