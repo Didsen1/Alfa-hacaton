@@ -20,12 +20,6 @@ const CreateTaskComponent: FC<{ closeModal: () => void }> = ({ closeModal }) => 
     description: '',
   });
 
-  useEffect(() => {
-    if (!formData.name && !formData?.expires_at && !formData?.description) {
-      dispatch(getPlanById(Number(plan_id)));
-    }
-  }, [dispatch, formData?.description, formData?.expires_at, formData.name, plan_id]);
-
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(
@@ -34,7 +28,6 @@ const CreateTaskComponent: FC<{ closeModal: () => void }> = ({ closeModal }) => 
         { name: formData.name, expires_at: formData.expires_at, description: formData.description },
       ])
     );
-    dispatch(getPlanById(Number(plan_id)));
     setFormData({
       name: '',
       expires_at: '',

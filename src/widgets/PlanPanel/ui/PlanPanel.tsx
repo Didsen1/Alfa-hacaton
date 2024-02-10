@@ -18,6 +18,10 @@ const PlanPanel: FC<PlanProps> = ({ expires_at, aim_description, employee }) => 
     setIsOpen(true);
   };
 
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       <div className={style.panelWrapper}>
@@ -51,7 +55,7 @@ const PlanPanel: FC<PlanProps> = ({ expires_at, aim_description, employee }) => 
         <ButtonDesktop onClick={openModal} view="primary">Редактировать</ButtonDesktop>
       </div>
       <AppModal isOpen={isOpen} setIsOpen={setIsOpen}>
-        <EditPlanComponent />
+        <EditPlanComponent closeModal={closeModal} />
       </AppModal>
     </>
   );

@@ -81,7 +81,7 @@ export const tasksSlice = createSlice({
       state.isError = false;
 
       const currentTasks = state.tasks;
-      currentTasks.unshift(action.payload);
+      currentTasks.push(action.payload);
       state.tasks = currentTasks;
     });
     builder.addCase(createTask.rejected, (state, action: PayloadAction<any>) => {

@@ -45,7 +45,7 @@ export const plansSlice = createSlice({
     builder.addCase(updatePlanById.fulfilled, (state, action: PayloadAction<Plan>) => {
       state.isLoading = false;
       state.isError = false;
-      state.plans = state.plans.map((plan) => (plan.id === action.payload.id ? action.payload : plan));
+      state.currentPlan = action.payload;
     });
     builder.addCase(updatePlanById.rejected, (state, action: PayloadAction<any>) => {
       state.isLoading = false;

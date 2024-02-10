@@ -17,7 +17,7 @@ import { AppStatus, type Task } from '../../model/types/Task';
 const OpenTask: FC<{ closeSidebar?: () => void }> = ({ closeSidebar }) => {
   const task = useAppSelector((state) => state.tasks.currentTask);
   const { comments } = useAppSelector((state) => state.comments);
-  const { task_id, plan_id } = useParams();
+  const { task_id } = useParams();
   const { type: userRole } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
@@ -51,7 +51,14 @@ const OpenTask: FC<{ closeSidebar?: () => void }> = ({ closeSidebar }) => {
         { name: formData.taskName, expires_at: formData.date, description: formData.description },
       ])
     );
-    dispatch(getPlanById(Number(plan_id)));
+  };
+
+  const acceptTask = () => {
+    dispatch(updateTaskById([normalizeTaskId, { status: 'done' }]));
+  };
+
+  const reverceTask = () => {
+    dispatch(updateTaskById([normalizeTaskId, { status: 'in_progress' }]));
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -65,6 +72,10 @@ const OpenTask: FC<{ closeSidebar?: () => void }> = ({ closeSidebar }) => {
     if (userRole === 'superior') {
       if (task?.status === 'in_progress' || task?.status === 'created') {
         editTask();
+      }
+
+      if (task?.status === 'under_review') {
+        acceptTask();
       }
     }
   };
@@ -96,8 +107,10 @@ const OpenTask: FC<{ closeSidebar?: () => void }> = ({ closeSidebar }) => {
     if (userRole === 'superior') {
       return task?.status === 'under_review' ? (
         <>
-          <Button view="primary">Принять</Button>
-          <Button>На доработку</Button>
+          <Button type="submit" view="primary">
+            Принять
+          </Button>
+          <Button onClick={reverceTask}>На доработку</Button>
         </>
       ) : task?.status === 'created' || task?.status === 'in_progress' ? (
         <Button type="submit" view="primary">
